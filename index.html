@@ -519,6 +519,24 @@
         margin-top: 40px;
         /* Adjust the space between the countdown and the message */
     }
+
+    @media screen and (min-width: 768px) {
+  .presale-box {
+    top: calc(1000px +7%); /* Much lower position */
+  }
+}
+
+@media screen and (min-width: 1281px) {
+  .presale-box {
+    top: calc(1200px + 7%); /* Even lower  */ 
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .presale-box {
+    top: calc(1500px + 7%); /* Significantly lower */ 
+  } 
+}
 </style></head>
 
 
@@ -1255,8 +1273,6 @@
                                     showBuyButtons("bsc");
                                 });
                         });
-
-
                     </script>
                     <div class="col-lg-4">
                         <div class="banner__thumb about__thumb about__thumb--floating" data-aos="zoom-in-up" data-aos-duration="1000">
