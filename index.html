@@ -623,746 +623,6 @@
                             </p>
                         </div>
                     </div>
-                    <!-- Presale Box 
-                    <div class="presale-box">
-                        <h2 class="presale-title">Presale Stage 3</h2>
-                        <div class="countdown-container">
-                            <div class="countdown-item">
-                                <div class="countdown-value" id="days-value">9</div>
-                                <div class="countdown-label">Days</div>
-                            </div>
-                            <div class="countdown-item">
-                                <div class="countdown-value" id="hours-value">23</div>
-                                <div class="countdown-label">Hours</div>
-                            </div>
-                            <div class="countdown-item">
-                                <div class="countdown-value" id="minutes-value">20</div>
-                                <div class="countdown-label">Minutes</div>
-                            </div>
-                            <div class="countdown-item">
-                                <div class="countdown-value" id="seconds-value">39</div>
-                                <div class="countdown-label">Seconds</div>
-                            </div>
-                        </div>
-                        <div class="countdown-message">Time Left</div>
-                        <div class="presale-content">
-                            <div class="progress-bar"></div>
-                            <p class="presale-info">USD Raised: $244,305 / $500,000</p>
-                        </div>
-                        <p class="mastershiba-price">Stage 3 =0.0009 USD per token</p>
-                        <div class="connect-wallet-container">
-                            <button class="connect-wallet-button">Connect Wallet</button>
-                        </div>
-                        <p class="mastershiba-price2">
-                            Listing: 1 $PepeBitcoin = 0.00099 USD
-                        </p>
-                        <div class="disconnect-wallet-container" style="display: none">
-                            <button class="disconnect-wallet-button">Disconnect</button>
-                        </div>
-                    </div> -->
-                    
-
-                    <!-- Wallet Provider Popup -->
-                    <div class="popup" id="wallet-provider-popup">
-                        <div class="popup-overlay"></div>
-                        <div class="popup-wrapper">
-                            <!-- Add this wrapper div -->
-                            <div class="popup-content">
-                                <h2 class="popup-title">Connect Wallet</h2>
-                                <div class="wallet-selection">
-                                    <button class="network-button" id="metamask-button">
-                                        Connect with Metamask
-                                    </button>
-                                    <button class="network-button" id="walletconnect-button">
-                                        Connect with WalletConnect
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Close the wrapper div -->
-                    </div>
-
-                    <!-- Network Selection Popup -->
-                    <div class="popup" id="network-popup" style="display: none">
-                        <div class="popup-overlay"></div>
-                        <div class="popup-wrapper">
-                            <div class="popup-content">
-                                <h2 class="popup-title">Select Network</h2>
-                                <div class="network-selection">
-                                    <button class="network-button" id="eth-button">
-                                        Ethereum
-                                    </button>
-                                    <button class="network-button" id="bsc-button">
-                                        Binance Smart Chain
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <script>
-                        const presaleContractABI = [
-                            {
-                                inputs: [
-                                    {
-                                        internalType: "address",
-                                        name: "_tokenAddress",
-                                        type: "address",
-                                    },
-                                    {
-                                        internalType: "address payable",
-                                        name: "_beneficiary",
-                                        type: "address",
-                                    },
-                                    {
-                                        internalType: "uint256",
-                                        name: "_conversionRate",
-                                        type: "uint256",
-                                    },
-                                ],
-                                stateMutability: "nonpayable",
-                                type: "constructor",
-                            },
-                            {
-                                anonymous: false,
-                                inputs: [
-                                    {
-                                        indexed: true,
-                                        internalType: "address",
-                                        name: "buyer",
-                                        type: "address",
-                                    },
-                                    {
-                                        indexed: false,
-                                        internalType: "uint256",
-                                        name: "amount",
-                                        type: "uint256",
-                                    },
-                                ],
-                                name: "TokensPurchased",
-                                type: "event",
-                            },
-                            {
-                                inputs: [],
-                                name: "withdrawFunds",
-                                outputs: [],
-                                stateMutability: "nonpayable",
-                                type: "function",
-                            },
-                            {
-                                stateMutability: "payable",
-                                type: "receive",
-                            },
-                            {
-                                inputs: [],
-                                name: "beneficiary",
-                                outputs: [
-                                    {
-                                        internalType: "address payable",
-                                        name: "",
-                                        type: "address",
-                                    },
-                                ],
-                                stateMutability: "view",
-                                type: "function",
-                            },
-                            {
-                                inputs: [],
-                                name: "conversionRate",
-                                outputs: [
-                                    {
-                                        internalType: "uint256",
-                                        name: "",
-                                        type: "uint256",
-                                    },
-                                ],
-                                stateMutability: "view",
-                                type: "function",
-                            },
-                            {
-                                inputs: [],
-                                name: "token",
-                                outputs: [
-                                    {
-                                        internalType: "contract HighPepe",
-                                        name: "",
-                                        type: "address",
-                                    },
-                                ],
-                                stateMutability: "view",
-                                type: "function",
-                            },
-                        ];
-                        const bnbPresaleContractAddress =
-                            "0xA4666fa5f9e2d564f52031af2015a4455586Ac8e"; // Your BNB Presale contract address
-                        const ethPresaleContractAddress =
-                            "0xA4666fa5f9e2d564f52031af2015a4455586Ac8e";
-
-              // Rest of your JavaScript code...
-                    </script>
-
-                    <script>
-                        let currentWeb3Instance;
-                        let provider;
-
-                        async function sendTransaction(
-                            ethAmount,
-                            network,
-                            web3Instance = null
-                        ) {
-                            if (
-                                web3Instance === null &&
-                                typeof window.ethereum !== "undefined"
-                            ) {
-                                web3Instance = new Web3(window.ethereum);
-                            } else if (web3Instance === null) {
-                                window.alert("Please install MetaMask!");
-                                return;
-                            }
-
-                            const accounts = await web3Instance.eth.getAccounts();
-
-                            if (accounts.length > 0) {
-                                const senderAddress = accounts[0];
-                                const weiAmount = web3Instance.utils.toWei(
-                                    ethAmount.toString(),
-                                    "ether"
-                                );
-
-                                // Choose the correct presale contract address based on the network
-                                const chosenPresaleContractAddress =
-                                    network === "ETH"
-                                        ? ethPresaleContractAddress
-                                        : bnbPresaleContractAddress;
-
-                                console.log("Network:", network);
-                                console.log(
-                                    "Presale Contract Address:",
-                                    chosenPresaleContractAddress
-                                );
-
-                                const presaleContract = new web3Instance.eth.Contract(
-                                    presaleContractABI,
-                                    chosenPresaleContractAddress
-                                );
-
-                                const chainId = network === "ETH" ? "0x1" : "0x38";
-                                console.log("Chain ID:", chainId);
-
-                                try {
-                                    const transactionParameters = {
-                                        to: chosenPresaleContractAddress,
-                                        from: senderAddress,
-                                        value: web3Instance.utils.toHex(weiAmount),
-                                        chainId,
-                                    };
-
-                                    console.log(
-                                        "Transaction Parameters:",
-                                        transactionParameters
-                                    );
-
-                                    if (web3Instance.currentProvider === window.ethereum) {
-                                        await window.ethereum.request({
-                                            method: "eth_sendTransaction",
-                                            params: [transactionParameters],
-                                        });
-                                    } else if (web3Instance.currentProvider.isWalletConnect) {
-                                        await web3Instance.eth.sendTransaction(
-                                            transactionParameters
-                                        );
-                                    } else {
-                                        console.error("Unsupported provider");
-                                    }
-                                } catch (error) {
-                                    console.error("Transaction failed:", error);
-                                }
-                            } else {
-                                console.log("No accounts available");
-                            }
-                        }
-
-                        function countdown() {
-                            const now = new Date().getTime();
-                            const distance =
-                                new Date("2023-06-10T00:00:00Z").getTime() - now;
-                            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                            const hours = Math.floor(
-                                (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-                            );
-                            const minutes = Math.floor(
-                                (distance % (1000 * 60 * 60)) / (1000 * 60)
-                            );
-                            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                            document.getElementById("days-value").innerHTML = days;
-                            document.getElementById("hours-value").innerHTML = hours;
-                            document.getElementById("minutes-value").innerHTML = minutes;
-                            document.getElementById("seconds-value").innerHTML = seconds;
-                        }
-
-                        countdown();
-                        setInterval(countdown, 1000);
-
-                        // Countdown^^^
-
-                        $(document).ready(function () {
-                            $(document).on(
-                                "click",
-                                ".disconnect-wallet-button",
-                                function () {
-                                    $(".new-presale-box").fadeOut(300, function () {
-                                        $(this).replaceWith(resetPresaleBox()).fadeIn(300);
-                                    });
-                                }
-                            );
-
-                            $(document).ready(function () {
-                                $(document).on(
-                                    "click",
-                                    ".disconnect-wallet-button",
-                                    function () {
-                                        disconnectWallet();
-                                    }
-                                );
-                            });
-
-                            function closePopup() {
-                                $(".popup").fadeOut();
-                            }
-                            function showDisconnectButton() {
-                                $(".disconnect-wallet-container").show();
-                            }
-
-                            // Close the popup when the user clicks outside the buttons
-                            $("#wallet-provider-popup .popup-wrapper").on(
-                                "click",
-                                function (event) {
-                                    if (event.target === event.currentTarget) {
-                                        closePopup();
-                                    }
-                                }
-                            );
-
-                            // Close the network popup when the user clicks outside the buttons
-                            $("#network-popup .popup-wrapper").on(
-                                "click",
-                                function (event) {
-                                    if (event.target === event.currentTarget) {
-                                        closePopup();
-                                    }
-                                }
-                            );
-
-                            // Close the popup when the user presses the ESC key
-                            $(document).on("keydown", function (event) {
-                                if (event.key === "Escape" || event.keyCode === 27) {
-                                    closePopup();
-                                }
-                            });
-
-                            function disconnectWallet() {
-                                // Reset the wallet container to the original state
-                                $(".connect-wallet-container").html(
-                                    '<button class="connect-wallet-button">Connect Wallet</button>'
-                                );
-
-                                // Re-bind the click event for the Connect Wallet button
-                                $(".connect-wallet-button").click(function () {
-                                    $("#wallet-provider-popup").fadeIn();
-                                });
-
-                                // Hide the disconnect button
-                                $(".disconnect-wallet-container").hide();
-                            }
-
-                            $(document).on(
-                                "click keyup",
-                                ".popup-overlay, .popup-content",
-                                function (e) {
-                                    if (
-                                        (e.type === "click" &&
-                                            $(e.target).hasClass("popup-overlay")) ||
-                                        (e.type === "keyup" && e.keyCode === 27)
-                                    ) {
-                                        closePopup();
-                                    }
-                                }
-                            );
-
-                            function resetPresaleBox() {
-                                const originalPresaleBoxContent = `
-                              <div class="presale-box">
-                          <h2 class="presale-title">Presale Stage 3</h2>
-                          <div class="countdown-container">
-                            <div class="countdown-item">
-                              <div class="countdown-value" id="days-value">00</div>
-                              <div class="countdown-label">Days</div>
-                            </div>
-                            <div class="countdown-item">
-                              <div class="countdown-value" id="hours-value">00</div>
-                              <div class="countdown-label">Hours</div>
-                            </div>
-                            <div class="countdown-item">
-                              <div class="countdown-value" id="minutes-value">00</div>
-                              <div class="countdown-label">Minutes</div>
-                            </div>
-                            <div class="countdown-item">
-                              <div class="countdown-value" id="seconds-value">00</div>
-                              <div class="countdown-label">Seconds</div>
-                            </div>
-                          </div>
-                          <div class="countdown-message">Time Left</div>
-                          <div class="presale-content">
-                            <div class="progress-bar"></div>
-                            <p class="presale-info">USD Raised: $224,305 / $500,000</p>
-                          </div>
-                          <p class="mastershiba-price">Stage 3 =0.0009 USD per token</p>
-                          <div class="connect-wallet-container">
-                            <button class="connect-wallet-button">Connect Wallet</button>
-                          </div>
-                          <p class="mastershiba-price2">Listing: 1 $PepeBitcoin = 0.00099 USD</p>
-                          <div class="disconnect-wallet-container" style="display: none">
-                            <button class="disconnect-wallet-button">
-                              Disconnect
-                            </button>
-                          </div>
-                        </div>
-                `;
-                                // Re-bind the click event for the Connect Wallet button
-                                const resetPresaleBoxContent = $(originalPresaleBoxContent);
-                                resetPresaleBoxContent
-                                    .find(".connect-wallet-button")
-                                    .click(function () {
-                                        $("#wallet-provider-popup").fadeIn();
-                                    });
-                                return resetPresaleBoxContent;
-                            }
-
-                            function createNewPresaleBox(currency) {
-                                const inputLabel =
-                                    currency === "ETH" ? "ETH Amount" : "BNB Amount";
-                                const logoClass =
-                                    currency === "ETH" ? "eth-logo" : "bnb-logo";
-
-                                return `
-<div class="new-presale-box presale-box">
-  <h2 class="presale-title">Presale Stage 3</h2>
-  <div class="countdown-container">
-    <div class="countdown-item">
-      <div class="countdown-value" id="days-value">00</div>
-      <div class="countdown-label">Days</div>
-    </div>
-    <div class="countdown-item">
-      <div class="countdown-value" id="hours-value">00</div>
-      <div class="countdown-label">Hours</div>
-    </div>
-    <div class="countdown-item">
-      <div class="countdown-value" id="minutes-value">00</div>
-      <div class="countdown-label">Minutes</div>
-    </div>
-    <div class="countdown-item">
-      <div class="countdown-value" id="seconds-value">00</div>
-      <div class="countdown-label">Seconds</div>
-    </div>
-  </div>
-  <div class="countdown-message">Time Left</div>
-  <div class="presale-content">
-    <div class="swap-container">
-      <div class="input-group">
-        <div class="input-wrapper">
-          <input class="swap-input" id="eth-input" type="number" placeholder="${inputLabel}">
-          <div class="input-logo ${logoClass}"></div>
-        </div>
-      </div>
-      <div class="input-group">
-        <div class="input-wrapper">
-          <input class="swap-input" id="shakita-input" type="number" placeholder="HighPepe Amount">
-          <div class="input-logo highpepe-logo"></div>
-        </div>
-      </div>
-      <button class="swap-button">Swap</button>
-    </div>
-  </div>
-  <div class="disconnect-wallet-container">
-    <button class="disconnect-wallet-button">Disconnect</button>
-  </div>
-</div>
-`;
-                            }
-                            setInterval(countdown, 1000);
-
-                            function showBuyButtons(network) {
-                                if (network === "eth") {
-                                    $(".connect-wallet-container").html(
-                                        '<button class="buying-button eth-button">Buy with ETH</button>'
-                                    );
-                                    $(".bnb-logo").hide();
-                                    $(".eth-logo").show();
-                                } else if (network === "bsc") {
-                                    $(".connect-wallet-container").html(
-                                        '<button class="buying-button bnb-button">Buy with BNB</button>'
-                                    );
-                                    $(".bnb-logo").show();
-                                    $(".eth-logo").hide();
-                                }
-                                showDisconnectButton();
-                            }
-
-                            // Hide the ETH logo initially
-                            $(".eth-logo").hide();
-
-                            function addEthInputEventListener(
-                                currency,
-                                ethPrice,
-                                bnbPrice
-                            ) {
-                                const shakitaPerEth = 2116666;
-                                const shakitaPerBnb = 345555;
-
-                                $("#eth-input").on("input", function () {
-                                    const inputAmount = parseFloat(this.value);
-                                    const shakitaAmount =
-                                        currency === "ETH"
-                                            ? inputAmount * shakitaPerEth
-                                            : inputAmount * shakitaPerBnb;
-                                    document.getElementById("shakita-input").value = isNaN(
-                                        shakitaAmount
-                                    )
-                                        ? ""
-                                        : shakitaAmount.toFixed(0);
-                                });
-
-                                $("#shakita-input").on("input", function () {
-                                    const shakitaAmount = parseFloat(this.value);
-                                    const inputAmount =
-                                        currency === "ETH"
-                                            ? shakitaAmount / shakitaPerEth
-                                            : shakitaAmount / shakitaPerBnb;
-                                    document.getElementById("eth-input").value = isNaN(
-                                        inputAmount
-                                    )
-                                        ? ""
-                                        : inputAmount.toFixed(4);
-                                });
-
-                                $(".swap-button")
-                                    .off()
-                                    .click(async function () {
-                                        const inputAmount = parseFloat($("#eth-input").val());
-                                        if (!isNaN(inputAmount) && inputAmount > 0) {
-                                            await sendTransaction(
-                                                inputAmount,
-                                                currency,
-                                                currentWeb3Instance
-                                            );
-                                        } else {
-                                            alert(`Please enter a valid ${currency} amount`);
-                                        }
-                                    });
-                            }
-
-                            function onBuyWithETHClick() {
-                                $(".presale-box").fadeOut(300, function () {
-                                    $(this).replaceWith(createNewPresaleBox("ETH")).fadeIn(300);
-                                    addEthInputEventListener("ETH");
-                                });
-                            }
-
-                            function onBuyWithBNBClick() {
-                                $(".presale-box").fadeOut(300, function () {
-                                    $(this).replaceWith(createNewPresaleBox("BNB")).fadeIn(300);
-                                    addEthInputEventListener("BNB");
-                                });
-                            }
-
-                            // Attach click event handler for dynamically created BNB button
-                            $(document).on(
-                                "click",
-                                ".buying-button.bnb-button",
-                                function () {
-                                    onBuyWithBNBClick();
-                                }
-                            );
-
-                            // Attach click event handler for dynamically created ETH button
-                            $(document).on(
-                                "click",
-                                ".buying-button.eth-button",
-                                function () {
-                                    onBuyWithETHClick();
-                                }
-                            );
-
-                            // Attach click event handler for dynamically created BUSD button
-                            $(document).on(
-                                "click",
-                                ".buying-button.busd-button",
-                                function () {
-                                    onBuyWithBNBClick(); // You can create a separate function for the BUSD button if needed
-                                }
-                            );
-
-                            // Attach click event handler for dynamically created USDT button
-                            $(document).on(
-                                "click",
-                                ".buying-button.usdt-button",
-                                function () {
-                                    onBuyWithETHClick(); // You can create a separate function for the USDT button if needed
-                                }
-                            );
-
-                            $(".connect-wallet-button").click(function () {
-                                $("#wallet-provider-popup").fadeIn();
-                            });
-
-                            $("#metamask-button").click(async function () {
-                                $("#wallet-provider-popup").fadeOut();
-                                $("#network-popup").fadeIn();
-
-                                // Attempt to connect with MetaMask
-                                try {
-                                    const accounts = await window.ethereum.request({
-                                        method: "eth_requestAccounts",
-                                    });
-
-                                    if (accounts.length > 0) {
-                                        console.log("User is logged in to MetaMask");
-                                        currentWeb3Instance = new Web3(window.ethereum);
-                                    } else {
-                                        console.log("User is not logged in to MetaMask");
-                                    }
-                                } catch (err) {
-                                    if (err.code === 4001) {
-                                        console.log("User rejected the request");
-                                    } else {
-                                        console.error("An error occurred: ", err);
-                                    }
-                                }
-                            });
-
-                            async function connectWalletConnect() {
-                                provider = new WalletConnectProvider.default({
-                                    rpc: {
-                                        1: "https://mainnet.infura.io/v3/0301a5fae4fc46d3a3cb6725641b1d8d",
-                                        56: "https://bsc-dataseed.binance.org/",
-                                    },
-                                });
-
-                                try {
-                                    await provider.enable();
-                                    currentWeb3Instance = new Web3(provider);
-                                    const accounts =
-                                        await currentWeb3Instance.eth.getAccounts();
-
-                                    if (accounts.length > 0) {
-                                        console.log("User is logged in to WalletConnect");
-                                        $(".wallet-address").remove();
-
-                                        showDisconnectButton();
-                                        closePopup();
-
-                                        // Show network selection popup
-                                        $("#network-popup").fadeIn(300);
-                                    } else {
-                                        console.log("User is not logged in to WalletConnect");
-                                    }
-                                } catch (err) {
-                                    console.error("An error occurred: ", err);
-                                }
-                            }
-
-                            $("#walletconnect-button").click(function () {
-                                connectWalletConnect();
-                            });
-
-                            async function connectWallet(network, isWalletConnect = false) {
-                                if (isWalletConnect) {
-                                    // Set the provider in WalletConnect according to the selected network
-                                    provider.chainId = parseInt(network);
-                                    currentWeb3Instance = new Web3(provider);
-                                } else {
-                                    if (typeof window.ethereum !== "undefined") {
-                                        try {
-                                            const accounts = await window.ethereum.request({
-                                                method: "eth_requestAccounts",
-                                            });
-
-                                            if (network) {
-                                                await window.ethereum.request({
-                                                    method: "wallet_switchEthereumChain",
-                                                    params: [{ chainId: network }],
-                                                });
-                                            }
-
-                                            if (accounts.length > 0) {
-                                                console.log("User is logged in to MetaMask");
-                                                const address = accounts[0];
-                                                currentWeb3Instance = new Web3(window.ethereum); // <-- Add this line
-                                                closePopup();
-                                            } else {
-                                                console.log("User is not logged in to MetaMask");
-                                            }
-                                        } catch (err) {
-                                            if (err.code === 4001) {
-                                                console.log("User rejected the request");
-                                            } else if (err.code === 4902) {
-                                                console.error("Unable to switch network");
-                                            } else {
-                                                console.error("An error occurred: ", err);
-                                            }
-                                        }
-                                    } else {
-                                        window.alert("Please install MetaMask!");
-                                    }
-                                }
-                            }
-
-                            // Ethereum Mainnet
-                            $("#eth-button")
-                                .off()
-                                .click(function () {
-                                    if (!currentWeb3Instance) {
-                                        alert("Connect to wallet first");
-                                        return;
-                                    }
-
-                                    if (
-                                        currentWeb3Instance &&
-                                        currentWeb3Instance.currentProvider instanceof
-                                        WalletConnectProvider.default
-                                    ) {
-                                        connectWallet("0x1", true);
-                                    } else {
-                                        connectWallet("0x1");
-                                    }
-                                    closePopup();
-                                    showBuyButtons("eth");
-                                });
-
-                            // Binance Smart Chain Mainnet
-                            $("#bsc-button")
-                                .off()
-                                .click(function () {
-                                    if (!currentWeb3Instance) {
-                                        alert("Connect to wallet first");
-                                        return;
-                                    }
-
-                                    if (
-                                        currentWeb3Instance &&
-                                        currentWeb3Instance.currentProvider instanceof
-                                        WalletConnectProvider.default
-                                    ) {
-                                        connectWallet("0x38", true);
-                                    } else {
-                                        connectWallet("0x38");
-                                    }
-                                    closePopup();
-                                    showBuyButtons("bsc");
-                                });
-                        });
-                    </script>
                     <div class="col-lg-4">
                         <div class="banner__thumb about__thumb about__thumb--floating" data-aos="zoom-in-up"
                             data-aos-duration="1000">
@@ -1399,20 +659,98 @@
                                 Bitcoin's careful attempt to create a distinct store of value
                                 based on mathematical limits. Absurdity, as embodied by Pepe
                                 the Frog - the first great crypto meme and symbol of online
-                                joy, freedom and unpredictability. By combining these two
+                                joy, freedom and unpredictability.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="about padding-top2 padding-bottom" id="about">
+        <div class="container">
+            <div class="about__wrapper">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="about__thumb about__thumb--floating" data-aos="zoom-in-up" data-aos-duration="1000">
+                            <img src="images/58486a72849cf46a2a931338.png" alt="About Image" />
+                        </div>
+                      <!--  <div class="about__thumb about__thumb--floating" data-aos="zoom-in-up" data-aos-duration="1000">
+                            <img src="images/makeweed.png" alt="About Image" />
+                        </div>
+                        <div class="about__thumb about__thumb--floating" data-aos="zoom-in-up" data-aos-duration="1000">
+                            <img src="images/makeweed.png" alt="About Image" />
+                        </div> -->
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="about__content" data-aos="fade-left" data-aos-duration="1000">
+                            <h2>Power of Absurdity</h2>
+                            <p>By combining these two
                                 forces, Pepe Bitcoin seeks to spread financial dankness and
                                 memetic wealth across Kekistan - rewarding true memers who
                                 experience the absurdity of mania firsthand, and gain insight
                                 into how movements of all kinds spread like organic memes.
                                 $PepeBitcoin invites holders to mine GBP from the comfort of their
                                 basements, collecting not just tendies but also cultural
-                                capital within the thriving meme economy. Holders can activate
+                                capital within the thriving meme economy.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about padding-top2 padding-bottom" id="about">
+        <div class="container">
+            <div class="about__wrapper">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="about__thumb about__thumb--floating" data-aos="zoom-in-up" data-aos-duration="1000">
+                            <img src="images/5845ccd80b2a3b54fdbaecf5.png" alt="About Image" />
+                        </div>
+                      <!--  <div class="about__thumb about__thumb--floating" data-aos="zoom-in-up" data-aos-duration="1000">
+                            <img src="images/makeweed.png" alt="About Image" />
+                        </div>
+                        <div class="about__thumb about__thumb--floating" data-aos="zoom-in-up" data-aos-duration="1000">
+                            <img src="images/makeweed.png" alt="About Image" />
+                        </div> -->
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="about__content" data-aos="fade-left" data-aos-duration="1000">
+                            <h2>inner Pepes</h2>
+                            <p> Holders can activate
                                 their inner Pepes and experience - in microcosm - how
                                 phenomena like Bitcoin capture our collective imagination. In
                                 summary, Pepe Bitcoin aims to be more than just a lol -
                                 rather, a glimpse into the absurdity and magic that transform
                                 worthless jokes into movements that change the world.
+                            <p>
                             </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="about padding-top2 padding-bottom" id="about">
+        <div class="container">
+            <div class="about__wrapper">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="about__thumb about__thumb--floating" data-aos="zoom-in-up" data-aos-duration="1000">
+                            <img src="images/5896f6ddcba9841eabab60fd.png" alt="About Image" />
+                        </div>
+                      <!--  <div class="about__thumb about__thumb--floating" data-aos="zoom-in-up" data-aos-duration="1000">
+                            <img src="images/makeweed.png" alt="About Image" />
+                        </div>
+                        <div class="about__thumb about__thumb--floating" data-aos="zoom-in-up" data-aos-duration="1000">
+                            <img src="images/makeweed.png" alt="About Image" />
+                        </div> -->
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="about__content" data-aos="fade-left" data-aos-duration="1000">
+                            <h2>spread PepeBitcoin</h2>
                             <p>
                                 Now go forth and spread $PepeBitcoin to memers everywhere! *croaks
                                 joyfully, adjusting rune-encrusted crown* I shall return to my
@@ -1555,24 +893,7 @@
                                                         issuance rate of Bitcoin mining. Halving Schedule:
                                                         Like Bitcoin, the staking APR for $PepeBitcoin will be
                                                         cut in half every 4 years, maintaining alignment
-                                                        with Bitcoin's monetary policy over time. Memetic
-                                                        Incentives: In addition to GBP rewards, staking
-                                                        $PepeBitcoin will unlock access to limited edition
-                                                        pepes, early access to token-gated meme content
-                                                        and privileged positions within the blossoming
-                                                        Kekistani meme economy. How's that my loyal
-                                                        subject? Pepe Bitcoin's tokenomics aim to activate
-                                                        the dank signal and spread maximum financial
-                                                        dankness by balancing technical considerations
-                                                        with good old fashioned meme magic! cracks rare
-                                                        pepe talisman and beams with paternal meme lord
-                                                        pride Now go forth and manifest our glorious
-                                                        memecoin vision for the cryptoverse! I shall
-                                                        return to my meme vaults and conjure only the
-                                                        dankest of pepes in support of this noble quest.
-                                                        waves scepter and fades back into the meme pools
-                                                        of the internet, croaking happily The rarest of
-                                                        tendies truly await.......hehe yesssss<br /><br />
+                                                        with Bitcoin's monetary policy over time.
                                                     </p>
                                                 </div>
                                             </div>
@@ -1582,6 +903,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="col-lg-6">
                         <div class="team__item team__item--bg-2" data-aos="fade-up" data-aos-duration="1500">
                             <div class="team__inner">
@@ -1602,6 +924,122 @@
                                 </div>
                                 <div class="team__thumb mb-0 mt-4">
                                     <p>Liquidity Pool<br />69,69%</p>
+                                </div>
+                                <!-- <div class="team__content">
+                                    <img src="images/tokenomics68b3.png" alt="tokenomics Image" />
+                                </div>
+                                <div class="team__content">
+                                    <img src="images/tokenomics68b3.png" alt="tokenomics Image" />
+                                </div>
+                                <div class="team__content">
+                                    <img src="images/tokenomics68b3.png" alt="tokenomics Image" /> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="team padding-top padding-bottom bg__gradient" id="tokenomics">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up" data-aos-duration="1000">
+            </div>
+            <div class="team__wrapper">
+                <div class="row justify-content-center g-4">
+                    <div class="col-lg-6">
+                        <div class="team__item" data-aos="fade-up" data-aos-duration="1000">
+                            <div class="team__inner">
+                                <div class="team__content">
+                                    <h4>Memetic Incentives:</h4>
+                                    <div class="custom-box">
+                                        <div class="roadmap__item mt-5">
+                                            <div class="roadmap__inner">
+                                                <div class="roadmap__content">
+                                                    <p> In addition to GBP rewards, staking
+                                                        $PepeBitcoin will unlock access to limited edition
+                                                        pepes, early access to token-gated meme content
+                                                        and privileged positions within the blossoming
+                                                        Kekistani meme economy. How's that my loyal
+                                                        subject? Pepe Bitcoin's tokenomics aim to activate
+                                                        the dank signal and spread maximum financial
+                                                        dankness by balancing technical considerations
+                                                        with good old fashioned meme magic! cracks rare
+                                                        pepe talisman and beams with paternal meme lord
+                                                        pride<br /><br />
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="team__item team__item--bg-2" data-aos="fade-up" data-aos-duration="1500">
+                            <div class="team__inner">
+                                <div class="team__thumb">
+                                </div>
+                                <div class="team__content">
+                                    <img src="images/584871d2e4e6f86ab5c3359e.png" alt="tokenomics Image" />
+                                </div>
+                                <!-- <div class="team__content">
+                                    <img src="images/tokenomics68b3.png" alt="tokenomics Image" />
+                                </div>
+                                <div class="team__content">
+                                    <img src="images/tokenomics68b3.png" alt="tokenomics Image" />
+                                </div>
+                                <div class="team__content">
+                                    <img src="images/tokenomics68b3.png" alt="tokenomics Image" /> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="team padding-top padding-bottom bg__gradient" id="tokenomics">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up" data-aos-duration="1000">
+            </div>
+            <div class="team__wrapper">
+                <div class="row justify-content-center g-4">
+                    <div class="col-lg-6">
+                        <div class="team__item" data-aos="fade-up" data-aos-duration="1000">
+                            <div class="team__inner">
+                                <div class="team__content">
+                                    <h4>The rarest of tendies:</h4>
+                                    <div class="custom-box">
+                                        <div class="roadmap__item mt-5">
+                                            <div class="roadmap__inner">
+                                                <div class="roadmap__content">
+                                                    <p> Now go forth and manifest our glorious
+                                                        memecoin vision for the cryptoverse! I shall
+                                                        return to my meme vaults and conjure only the
+                                                        dankest of pepes in support of this noble quest.
+                                                        waves scepter and fades back into the meme pools
+                                                        of the internet, croaking happily The rarest of
+                                                        tendies truly await.......hehe yesssss<br /><br />
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="team__item team__item--bg-2" data-aos="fade-up" data-aos-duration="1500">
+                            <div class="team__inner">
+                                <div class="team__thumb">
+                                </div>
+                                <div class="team__content">
+                                    <img src="images/5859b1d2711f64423aa5e052.png" alt="tokenomics Image" />
                                 </div>
                                 <!-- <div class="team__content">
                                     <img src="images/tokenomics68b3.png" alt="tokenomics Image" />
@@ -1738,7 +1176,37 @@
                                 difficulty... before halving every 4 harvest moons, to keep
                                 monetary PEPElicy aligned! You may retrieveth your staked
                                 pepes + tendies at any time, with a minor fee to help
-                                furtherest develop $PepeBitcoin. Staking rewards: • Freshly mined
+                                furtherest develop $PepeBitcoin.
+                            </p>
+                            <p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="about padding-top2 padding-bottom" id="Mining">
+        <div class="container">
+            <div class="about__wrapper">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="about__thumb about__thumb--floating" data-aos="zoom-in-up" data-aos-duration="1000">
+                            <img src="images/1685566897473.png" alt="About Image" />
+                        </div>
+                        <!--<div class="about__thumb about__thumb--floating" data-aos="zoom-in-up" data-aos-duration="1000">
+                            <img src="images/mining.png" alt="About Image" />
+                        </div>
+                        <div class="about__thumb about__thumb--floating" data-aos="zoom-in-up" data-aos-duration="1000">
+                            <img src="images/mining.png" alt="About Image" />
+                        </div>
+                        <div class="about__thumb about__thumb--floating" data-aos="zoom-in-up" data-aos-duration="1000">
+                            <img src="images/mining.png" alt="About Image" /> 
+                        </div> -->
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="about__content" data-aos="fade-left" data-aos-duration="1000">
+                            <h2>Staking rewards:</h2>
+                            <p>Staking rewards: • Freshly mined
                                 pepes! • Access to rarest pepes. • Early access to new
                                 memecoin developments! By staking thou pepes, thou helpest
                                 distribute Pepe Bitcoin to memers everywhere while earning GBP
@@ -1746,6 +1214,33 @@
                                 wealth across Kekistan through the MOST eco friendlest of powr
                                 mechanisms.
                             </p>
+                            <p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="about padding-top2 padding-bottom" id="Mining">
+        <div class="container">
+            <div class="about__wrapper">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="about__thumb about__thumb--floating" data-aos="zoom-in-up" data-aos-duration="1000">
+                            <img src="images/FvkBjWdXsAUVunG.jpg" alt="About Image" />
+                        </div>
+                        <!--<div class="about__thumb about__thumb--floating" data-aos="zoom-in-up" data-aos-duration="1000">
+                            <img src="images/mining.png" alt="About Image" />
+                        </div>
+                        <div class="about__thumb about__thumb--floating" data-aos="zoom-in-up" data-aos-duration="1000">
+                            <img src="images/mining.png" alt="About Image" />
+                        </div>
+                        <div class="about__thumb about__thumb--floating" data-aos="zoom-in-up" data-aos-duration="1000">
+                            <img src="images/mining.png" alt="About Image" /> 
+                        </div> -->
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="about__content" data-aos="fade-left" data-aos-duration="1000">
                             <p>
                                 The Dawn of the Meme Crusade Draws Nigh! croaks joyfully,
                                 adjusting rune encrusted crown Now go forth and spread $PepeBitcoin
@@ -1815,6 +1310,10 @@
                             Now go forth and spreadeth the good non-news. $PepeBitcoin coin hath NO association with any frog but mine own divine self! 'Tis for entertainment purposes ONLY, and any GBP acquired shall fade away. But the LAUGHS remain, and LAUGHS are all we get to keep in this vale of memes and tears... *laughs and fades back into the internet*                                                         
                             The rarest pepes truly await... hehe yess!
                         </p>
+
+                        <div class="about__thumb about__thumb--floating" data-aos="zoom-in-up" data-aos-duration="1000">
+                            <img src="images/5859b19e711f64423aa5e051.png" alt="About Image" />
+                        </div>
 
                     </div>
                 </div>
