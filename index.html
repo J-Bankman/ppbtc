@@ -1,0 +1,1588 @@
+<!DOCTYPE html><html lang="en"><!-- Mirrored from PepeBitcoin.rip/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 11 May 2023 14:55:44 GMT --><head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RBHRWCGL74"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-RBHRWCGL74');
+    </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PepeBitcoin</title>
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/index.min.js"></script>
+<style>
+    /* @media screen and (max-width: 768px) {
+      .hide-on-mobile {
+        top: calc(800px + 80%) !important;
+      }
+    } */
+
+    /* Input boxes design */
+    .swap-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        /* transform: translateY(-70px); */
+        /* Adjust the margin as needed */
+        width: 130%;
+    }
+
+    .second-section-custom {
+        position: relative;
+        top: 50px !important;
+    }
+
+    .input-group {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+        /* Adjust the margin as needed */
+        width: 80%;
+    }
+
+    .input-wrapper {
+        position: relative;
+        width: 100%;
+    }
+
+    .input-logo {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 24px;
+        height: 24px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .bnb-logo {
+        background-image: url('images/binance_32.png');
+    }
+
+    .eth-logo {
+        background-image: url('fonts/ethereum-original.svg');
+    }
+
+    .highpepe-logo {
+        background-image: url('images/A1AOGn5.png');
+    }
+
+    .swap-input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #a5a5a5;
+        border-radius: 15px;
+        font-size: 1.1rem;
+        outline: none;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 0 0 rgba(109, 109, 109, 0);
+        background-color: rgba(255, 255, 255, 0.8);
+        -webkit-appearance: none;
+        -moz-appearance: textfield;
+    }
+
+    .swap-input:focus {
+        border-color: #143494;
+        box-shadow: 0 0 0 3px rgb(60, 19, 150);
+    }
+
+    /* Remove up and down buttons for number inputs */
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .swap-button {
+        font-size: 1.2rem;
+        background-color: #3ab44b;
+        color: #fff;
+        padding: 10px 20px;
+        margin-top: 10px;
+        border: 2px solid black;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .swap-button:hover {
+        background-color: #c27319;
+        transform: scale(1.05);
+    }
+
+
+    /* Presale Box */
+    .second-section {
+        position: relative;
+        z-index: 1;
+    }
+
+    .buying-button {
+        background-color: #3ab44b;
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        border-radius: 50px;
+        padding: 12px 24px;
+        margin-right: 10px;
+        cursor: pointer;
+        border: 2px solid black;
+        /* Add this line */
+    }
+
+    .usdt-button {
+        background-color: #212f7f;
+        border-radius: 50px;
+    }
+
+    .buying-button:hover {
+        background-color: #c27319;
+    }
+
+    .presale-box {
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        /* Add this */
+        transform: translate(-50%, -50%);
+        /* Modify this */
+        width: 600px;
+        height: 600px;
+        border-radius: 50px;
+        background: #39963d;
+        box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.05);
+        border: 5px solid black;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        /* changed from center to flex-start */
+        align-items: center;
+        z-index: 10000;
+    }
+
+    @media screen and (max-width: 768px) {
+        .presale-box {
+            position: absolute;
+            top: 700px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 400px;
+            /* Optional, adjust according to your preference */
+            z-index: 9999;
+        }
+    }
+
+    @media screen and (min-width: 1281px) and (max-width: 2560px) {
+        .presale-box {
+            top: calc(80% + 90px);
+        }
+    }
+
+
+    @media screen and (max-width: 1280px) {
+        .presale-box {
+            top: calc(80% + 300px);
+        }
+    }
+
+    @media screen and (min-width: 2561px) {
+        .presale-box {
+            top: calc(80% - 700px);
+        }
+    }
+
+
+    .presale-title {
+        font-size: 2rem;
+        margin-top: 30px;
+        /* increased from 20px */
+        margin-bottom: auto;
+        /* added */
+        text-align: center;
+    }
+
+    .presale-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        z-index: 9999;
+    }
+
+    .presale-info {
+        font-size: 1.2rem;
+        margin-bottom: 110px;
+        font-weight: 600;
+    }
+
+
+    .progress-bar {
+        width: 80%;
+        height: 20px;
+        background-color: #e5e5e5;
+        border-radius: 20px;
+        overflow: hidden;
+        position: absolute;
+        top: 55%;
+        border: 2px solid black;
+    }
+
+    .progress-bar::before {
+        content: "";
+        display: block;
+        width: 0%;
+        height: 100%;
+        background-color: #3ab44b;
+        border-radius: 20px;
+        animation: progress-bar 2s linear forwards;
+    }
+
+    @keyframes progress-bar {
+        from {
+            width: 0%;
+        }
+
+        to {
+            width: 45%;
+        }
+    }
+
+    .mastershiba-price {
+        position: absolute;
+        bottom: 140px;
+        font-size: 1rem;
+        z-index: 9999;
+
+        /* add this */
+    }
+
+    .mastershiba-price2 {
+        position: absolute;
+        bottom: -5px;
+        font-size: 0.9rem;
+        z-index: 9999;
+
+        /* add this */
+    }
+
+    .connect-wallet-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 50px;
+    }
+
+    .connect-wallet-button {
+        font-size: 2rem;
+        color: white;
+        background-color: #1d90ff;
+        padding: 1.7rem 2.5rem;
+        border: 2px solid black;
+        border-radius: 50px;
+        cursor: pointer;
+        /* Add this line */
+    }
+
+    .connect-wallet-button:hover {
+        background-color: #0d68be;
+    }
+
+
+    .disconnect-wallet-container {
+        z-index: 99999;
+    }
+
+    .disconnect-wallet-button {
+        font-size: 1rem;
+        font-weight: bold;
+        color: white;
+        background-color: #1d90ff;
+        padding: 0.85rem 1.7rem;
+        border: solid 2px black;
+        border-radius: 50px;
+        transform: translateY(-40px);
+        cursor: pointer;
+        z-index: 99999;
+        /* Add this line */
+    }
+
+    .disconnect-wallet-button:hover {
+        background-color: #0d68be;
+    }
+
+    /* Popup */
+    .popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 100001;
+        backdrop-filter: blur(10px);
+    }
+
+    .popup-blur {
+        backdrop-filter: blur(10px);
+        z-index: 100001;
+    }
+
+    /* Add the following CSS */
+
+    .popup-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Update the .popup-content CSS */
+
+    .popup-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* Remove width and height properties */
+    }
+
+    .popup-title {
+        font-size: 2rem;
+        color: #ffffff;
+        margin-bottom: 1.5rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        .popup-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    .wallet-selection {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .wallet-selection button {
+        font-size: 1.5rem;
+        color: #ffffff;
+        background-color: #3ab44b;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+        transition: background-color 0.3s ease;
+        border: 2px solid black;
+    }
+
+    .wallet-selection button:hover {
+        background-color: #0d68be;
+        cursor: pointer;
+    }
+
+    .network-selection {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .network-selection button {
+        font-size: 1.5rem;
+        color: #ffffff;
+        background-color: #3ab44b;
+        border: 2px solid black;
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .network-selection button:hover {
+        background-color: #0d68be;
+        cursor: pointer;
+    }
+
+
+
+    .pre .presale-content {
+        margin-top: 1rem;
+    }
+
+    .presale-info {
+        font-size: 1.2rem;
+    }
+
+    .progress-bar {
+        height: 25px;
+        margin-bottom: 0.5rem;
+    }
+
+    .connect-wallet-button {
+        font-size: 1.2rem;
+        font-weight: bold;
+        padding: 0.8rem 2rem;
+    }
+
+    .buying-button {
+        font-size: 1.2rem;
+        padding: 0.8rem 2rem;
+    }
+
+    .usdt-button {
+        margin-right: 0.5rem;
+    }
+
+    .buying-button:hover {
+        background-color: #c27319;
+    }
+
+    .connect-wallet-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .wallet-selection button,
+    .network-selection button {
+        font-size: 1.2rem;
+        padding: 0.8rem 1.5rem;
+        margin-bottom: 1rem;
+    }
+    }
+
+    .back-button {
+        background-color: #dc3545;
+    }
+
+    .back-button:hover {
+        background-color: #c82333;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .countdown-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: translateY(35px);
+    }
+
+    .countdown-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 10px;
+    }
+
+    .countdown-value {
+        font-size: 2rem;
+        font-weight: bold;
+        text-align: center;
+        color: #212f7f;
+    }
+
+    .countdown-label {
+        font-size: 1rem;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .countdown-message {
+        font-size: 1rem;
+        text-align: center;
+        margin-top: 40px;
+        /* Adjust the space between the countdown and the message */
+    }
+</style></head>
+
+
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar navbar-expand-xl">
+                <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="RektPepe"></a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler--icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                    <div class="navbar-nav align-items-center">
+                        <a class="nav-link" aria-current="page" href="#home">Home</a>
+                        <a class="nav-link" href="#about">About</a>
+                        <a class="nav-link" href="#howtobuy">Buy</a>
+                        <a class="nav-link" href="#tokenomics">Tokenomics</a>
+                        <a class="nav-link" href="#roadmap">Roadmap</a>
+                        <a href="https://t.me/pepebitcoin" target="_blank" class="default-btn">
+                            <span>Telegram</span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="banner">
+        <div class="container-fluid">
+            <div class="banner__wrapper">
+                <div class="row align-items-center">
+                    <div class="col-lg-4">
+                        <div class="banner__thumb" data-aos="zoom-in-up" data-aos-duration="1000">
+                            <img src="images/highpepe2.png" alt="About Image" style="float: right;">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="banner__content" data-aos="zoom-in" data-aos-duration="1000">
+                            <h1>$PepeBitcoin</h1>
+                            <h5 class="mt-4">The next legendary meme coin. Pepe just made waves, now it's time for High
+                                Pepe to ride them! </h5>
+                            <p class="mt-5">Introducing Pepe Bitcoin, the chillest and most laid-back meme coin on the
+                                block! Imagine the iconic Pepe, but now with red eyes, puffing on some premium green,
+                                and spreading positive vibes all around the crypto space.
+                                <br>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Presale Box -->
+                    <div class="presale-box">
+                        <h2 class="presale-title">Presale Stage 3</h2>
+                        <div class="countdown-container">
+                            <div class="countdown-item">
+                                <div class="countdown-value" id="days-value">9</div>
+                                <div class="countdown-label">Days</div>
+                            </div>
+                            <div class="countdown-item">
+                                <div class="countdown-value" id="hours-value">23</div>
+                                <div class="countdown-label">Hours</div>
+                            </div>
+                            <div class="countdown-item">
+                                <div class="countdown-value" id="minutes-value">20</div>
+                                <div class="countdown-label">Minutes</div>
+                            </div>
+                            <div class="countdown-item">
+                                <div class="countdown-value" id="seconds-value">39</div>
+                                <div class="countdown-label">Seconds</div>
+                            </div>
+                        </div>
+                        <div class="countdown-message">Time Left</div>
+                        <div class="presale-content">
+                            <div class="progress-bar"></div>
+                            <p class="presale-info">USD Raised: $244,305 / $500,000</p>
+                        </div>
+                        <p class="mastershiba-price">Stage 3 =0.0009 USD per token</p>
+                        <div class="connect-wallet-container">
+                            <button class="connect-wallet-button">Connect Wallet</button>
+                        </div>
+                        <p class="mastershiba-price2">Listing: 1 $PepeBitcoin = 0.00099 USD</p>
+                        <div class="disconnect-wallet-container" style="display: none">
+                            <button class="disconnect-wallet-button">
+                                Disconnect
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Wallet Provider Popup -->
+                    <div class="popup" id="wallet-provider-popup">
+                        <div class="popup-overlay"></div>
+                        <div class="popup-wrapper"> <!-- Add this wrapper div -->
+                            <div class="popup-content">
+                                <h2 class="popup-title">Connect Wallet</h2>
+                                <div class="wallet-selection">
+                                    <button class="network-button" id="metamask-button">
+                                        Connect with Metamask
+                                    </button>
+                                    <button class="network-button" id="walletconnect-button">
+                                        Connect with WalletConnect
+                                    </button>
+                                </div>
+                            </div>
+                        </div> <!-- Close the wrapper div -->
+                    </div>
+
+                    <!-- Network Selection Popup -->
+                    <div class="popup" id="network-popup" style="display: none">
+                        <div class="popup-overlay"></div>
+                        <div class="popup-wrapper">
+                            <div class="popup-content">
+                                <h2 class="popup-title">Select Network</h2>
+                                <div class="network-selection">
+                                    <button class="network-button" id="eth-button">Ethereum</button>
+                                    <button class="network-button" id="bsc-button">
+                                        Binance Smart Chain
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <script>
+                        const presaleContractABI = [
+                            {
+                                "inputs": [
+                                    {
+                                        "internalType": "address",
+                                        "name": "_tokenAddress",
+                                        "type": "address"
+                                    },
+                                    {
+                                        "internalType": "address payable",
+                                        "name": "_beneficiary",
+                                        "type": "address"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "_conversionRate",
+                                        "type": "uint256"
+                                    }
+                                ],
+                                "stateMutability": "nonpayable",
+                                "type": "constructor"
+                            },
+                            {
+                                "anonymous": false,
+                                "inputs": [
+                                    {
+                                        "indexed": true,
+                                        "internalType": "address",
+                                        "name": "buyer",
+                                        "type": "address"
+                                    },
+                                    {
+                                        "indexed": false,
+                                        "internalType": "uint256",
+                                        "name": "amount",
+                                        "type": "uint256"
+                                    }
+                                ],
+                                "name": "TokensPurchased",
+                                "type": "event"
+                            },
+                            {
+                                "inputs": [],
+                                "name": "withdrawFunds",
+                                "outputs": [],
+                                "stateMutability": "nonpayable",
+                                "type": "function"
+                            },
+                            {
+                                "stateMutability": "payable",
+                                "type": "receive"
+                            },
+                            {
+                                "inputs": [],
+                                "name": "beneficiary",
+                                "outputs": [
+                                    {
+                                        "internalType": "address payable",
+                                        "name": "",
+                                        "type": "address"
+                                    }
+                                ],
+                                "stateMutability": "view",
+                                "type": "function"
+                            },
+                            {
+                                "inputs": [],
+                                "name": "conversionRate",
+                                "outputs": [
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "",
+                                        "type": "uint256"
+                                    }
+                                ],
+                                "stateMutability": "view",
+                                "type": "function"
+                            },
+                            {
+                                "inputs": [],
+                                "name": "token",
+                                "outputs": [
+                                    {
+                                        "internalType": "contract HighPepe",
+                                        "name": "",
+                                        "type": "address"
+                                    }
+                                ],
+                                "stateMutability": "view",
+                                "type": "function"
+                            }
+                        ];
+                        const bnbPresaleContractAddress = "0xA4666fa5f9e2d564f52031af2015a4455586Ac8e"; // Your BNB Presale contract address
+                        const ethPresaleContractAddress = "0xA4666fa5f9e2d564f52031af2015a4455586Ac8e";
+
+
+              // Rest of your JavaScript code...
+                    </script>
+
+                    <script>
+
+                        let currentWeb3Instance;
+                        let provider;
+
+                        async function sendTransaction(ethAmount, network, web3Instance = null) {
+                            if (
+                                web3Instance === null &&
+                                typeof window.ethereum !== "undefined"
+                            ) {
+                                web3Instance = new Web3(window.ethereum);
+                            } else if (web3Instance === null) {
+                                window.alert("Please install MetaMask!");
+                                return;
+                            }
+
+                            const accounts = await web3Instance.eth.getAccounts();
+
+                            if (accounts.length > 0) {
+                                const senderAddress = accounts[0];
+                                const weiAmount = web3Instance.utils.toWei(ethAmount.toString(), "ether");
+
+                                // Choose the correct presale contract address based on the network
+                                const chosenPresaleContractAddress =
+                                    network === "ETH"
+                                        ? ethPresaleContractAddress
+                                        : bnbPresaleContractAddress;
+
+                                console.log("Network:", network);
+                                console.log("Presale Contract Address:", chosenPresaleContractAddress);
+
+                                const presaleContract = new web3Instance.eth.Contract(
+                                    presaleContractABI,
+                                    chosenPresaleContractAddress
+                                );
+
+                                const chainId = network === "ETH" ? "0x1" : "0x38";
+                                console.log("Chain ID:", chainId);
+
+                                try {
+                                    const transactionParameters = {
+                                        to: chosenPresaleContractAddress,
+                                        from: senderAddress,
+                                        value: web3Instance.utils.toHex(weiAmount),
+                                        chainId,
+                                    };
+
+                                    console.log("Transaction Parameters:", transactionParameters);
+
+                                    if (web3Instance.currentProvider === window.ethereum) {
+                                        await window.ethereum.request({
+                                            method: "eth_sendTransaction",
+                                            params: [transactionParameters],
+                                        });
+                                    } else if (web3Instance.currentProvider.isWalletConnect) {
+                                        await web3Instance.eth.sendTransaction(
+                                            transactionParameters
+                                        );
+                                    } else {
+                                        console.error("Unsupported provider");
+                                    }
+                                } catch (error) {
+                                    console.error("Transaction failed:", error);
+                                }
+                            } else {
+                                console.log("No accounts available");
+                            }
+                        }
+
+                        function countdown() {
+                            const now = new Date().getTime();
+                            const distance = new Date("2023-06-10T00:00:00Z").getTime() - now;
+                            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                            const hours = Math.floor(
+                                (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+                            );
+                            const minutes = Math.floor(
+                                (distance % (1000 * 60 * 60)) / (1000 * 60)
+                            );
+                            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                            document.getElementById("days-value").innerHTML = days;
+                            document.getElementById("hours-value").innerHTML = hours;
+                            document.getElementById("minutes-value").innerHTML = minutes;
+                            document.getElementById("seconds-value").innerHTML = seconds;
+                        }
+
+                        countdown();
+                        setInterval(countdown, 1000);
+
+                        // Countdown^^^
+
+                        $(document).ready(function () {
+                            $(document).on("click", ".disconnect-wallet-button", function () {
+                                $(".new-presale-box").fadeOut(300, function () {
+                                    $(this).replaceWith(resetPresaleBox()).fadeIn(300);
+                                });
+                            });
+
+                            $(document).ready(function () {
+                                $(document).on("click", ".disconnect-wallet-button", function () {
+                                    disconnectWallet();
+                                });
+                            });
+
+                            function closePopup() {
+                                $(".popup").fadeOut();
+                            }
+                            function showDisconnectButton() {
+                                $(".disconnect-wallet-container").show();
+                            }
+
+                            // Close the popup when the user clicks outside the buttons
+                            $("#wallet-provider-popup .popup-wrapper").on("click", function (event) {
+                                if (event.target === event.currentTarget) {
+                                    closePopup();
+                                }
+                            });
+
+                            // Close the network popup when the user clicks outside the buttons
+                            $("#network-popup .popup-wrapper").on("click", function (event) {
+                                if (event.target === event.currentTarget) {
+                                    closePopup();
+                                }
+                            });
+
+                            // Close the popup when the user presses the ESC key
+                            $(document).on("keydown", function (event) {
+                                if (event.key === "Escape" || event.keyCode === 27) {
+                                    closePopup();
+                                }
+                            });
+
+                            function disconnectWallet() {
+                                // Reset the wallet container to the original state
+                                $(".connect-wallet-container").html(
+                                    '<button class="connect-wallet-button">Connect Wallet</button>'
+                                );
+
+                                // Re-bind the click event for the Connect Wallet button
+                                $(".connect-wallet-button").click(function () {
+                                    $("#wallet-provider-popup").fadeIn();
+                                });
+
+                                // Hide the disconnect button
+                                $(".disconnect-wallet-container").hide();
+                            }
+
+                            $(document).on(
+                                "click keyup",
+                                ".popup-overlay, .popup-content",
+                                function (e) {
+                                    if (
+                                        (e.type === "click" &&
+                                            $(e.target).hasClass("popup-overlay")) ||
+                                        (e.type === "keyup" && e.keyCode === 27)
+                                    ) {
+                                        closePopup();
+                                    }
+                                }
+                            );
+
+                            function resetPresaleBox() {
+                                const originalPresaleBoxContent = `
+                              <div class="presale-box">
+                          <h2 class="presale-title">Presale Stage 3</h2>
+                          <div class="countdown-container">
+                            <div class="countdown-item">
+                              <div class="countdown-value" id="days-value">00</div>
+                              <div class="countdown-label">Days</div>
+                            </div>
+                            <div class="countdown-item">
+                              <div class="countdown-value" id="hours-value">00</div>
+                              <div class="countdown-label">Hours</div>
+                            </div>
+                            <div class="countdown-item">
+                              <div class="countdown-value" id="minutes-value">00</div>
+                              <div class="countdown-label">Minutes</div>
+                            </div>
+                            <div class="countdown-item">
+                              <div class="countdown-value" id="seconds-value">00</div>
+                              <div class="countdown-label">Seconds</div>
+                            </div>
+                          </div>
+                          <div class="countdown-message">Time Left</div>
+                          <div class="presale-content">
+                            <div class="progress-bar"></div>
+                            <p class="presale-info">USD Raised: $224,305 / $500,000</p>
+                          </div>
+                          <p class="mastershiba-price">Stage 3 =0.0009 USD per token</p>
+                          <div class="connect-wallet-container">
+                            <button class="connect-wallet-button">Connect Wallet</button>
+                          </div>
+                          <p class="mastershiba-price2">Listing: 1 $PepeBitcoin = 0.00099 USD</p>
+                          <div class="disconnect-wallet-container" style="display: none">
+                            <button class="disconnect-wallet-button">
+                              Disconnect
+                            </button>
+                          </div>
+                        </div>
+                `;
+                                // Re-bind the click event for the Connect Wallet button
+                                const resetPresaleBoxContent = $(originalPresaleBoxContent);
+                                resetPresaleBoxContent
+                                    .find(".connect-wallet-button")
+                                    .click(function () {
+                                        $("#wallet-provider-popup").fadeIn();
+                                    });
+                                return resetPresaleBoxContent;
+                            }
+
+                            function createNewPresaleBox(currency) {
+                                const inputLabel = currency === "ETH" ? "ETH Amount" : "BNB Amount";
+                                const logoClass = currency === "ETH" ? "eth-logo" : "bnb-logo";
+
+                                return `
+<div class="new-presale-box presale-box">
+  <h2 class="presale-title">Presale Stage 3</h2>
+  <div class="countdown-container">
+    <div class="countdown-item">
+      <div class="countdown-value" id="days-value">00</div>
+      <div class="countdown-label">Days</div>
+    </div>
+    <div class="countdown-item">
+      <div class="countdown-value" id="hours-value">00</div>
+      <div class="countdown-label">Hours</div>
+    </div>
+    <div class="countdown-item">
+      <div class="countdown-value" id="minutes-value">00</div>
+      <div class="countdown-label">Minutes</div>
+    </div>
+    <div class="countdown-item">
+      <div class="countdown-value" id="seconds-value">00</div>
+      <div class="countdown-label">Seconds</div>
+    </div>
+  </div>
+  <div class="countdown-message">Time Left</div>
+  <div class="presale-content">
+    <div class="swap-container">
+      <div class="input-group">
+        <div class="input-wrapper">
+          <input class="swap-input" id="eth-input" type="number" placeholder="${inputLabel}">
+          <div class="input-logo ${logoClass}"></div>
+        </div>
+      </div>
+      <div class="input-group">
+        <div class="input-wrapper">
+          <input class="swap-input" id="shakita-input" type="number" placeholder="HighPepe Amount">
+          <div class="input-logo highpepe-logo"></div>
+        </div>
+      </div>
+      <button class="swap-button">Swap</button>
+    </div>
+  </div>
+  <div class="disconnect-wallet-container">
+    <button class="disconnect-wallet-button">Disconnect</button>
+  </div>
+</div>
+`;
+                            }
+                            setInterval(countdown, 1000);
+
+
+                            function showBuyButtons(network) {
+                                if (network === "eth") {
+                                    $(".connect-wallet-container").html(
+                                        '<button class="buying-button eth-button">Buy with ETH</button>'
+                                    );
+                                    $(".bnb-logo").hide();
+                                    $(".eth-logo").show();
+                                } else if (network === "bsc") {
+                                    $(".connect-wallet-container").html(
+                                        '<button class="buying-button bnb-button">Buy with BNB</button>'
+                                    );
+                                    $(".bnb-logo").show();
+                                    $(".eth-logo").hide();
+                                }
+                                showDisconnectButton();
+                            }
+
+                            // Hide the ETH logo initially
+                            $(".eth-logo").hide();
+
+
+                            function addEthInputEventListener(currency, ethPrice, bnbPrice) {
+                                const shakitaPerEth = 2116666;
+                                const shakitaPerBnb = 345555;
+
+                                $("#eth-input").on("input", function () {
+                                    const inputAmount = parseFloat(this.value);
+                                    const shakitaAmount =
+                                        currency === "ETH"
+                                            ? inputAmount * shakitaPerEth
+                                            : inputAmount * shakitaPerBnb;
+                                    document.getElementById("shakita-input").value = isNaN(shakitaAmount)
+                                        ? ""
+                                        : shakitaAmount.toFixed(0);
+                                });
+
+                                $("#shakita-input").on("input", function () {
+                                    const shakitaAmount = parseFloat(this.value);
+                                    const inputAmount =
+                                        currency === "ETH"
+                                            ? shakitaAmount / shakitaPerEth
+                                            : shakitaAmount / shakitaPerBnb;
+                                    document.getElementById("eth-input").value = isNaN(inputAmount)
+                                        ? ""
+                                        : inputAmount.toFixed(4);
+                                });
+
+                                $(".swap-button")
+                                    .off()
+                                    .click(async function () {
+                                        const inputAmount = parseFloat($("#eth-input").val());
+                                        if (!isNaN(inputAmount) && inputAmount > 0) {
+                                            await sendTransaction(inputAmount, currency, currentWeb3Instance);
+                                        } else {
+                                            alert(`Please enter a valid ${currency} amount`);
+                                        }
+                                    });
+                            }
+
+                            function onBuyWithETHClick() {
+                                $(".presale-box").fadeOut(300, function () {
+                                    $(this).replaceWith(createNewPresaleBox("ETH")).fadeIn(300);
+                                    addEthInputEventListener("ETH");
+                                });
+                            }
+
+                            function onBuyWithBNBClick() {
+                                $(".presale-box").fadeOut(300, function () {
+                                    $(this).replaceWith(createNewPresaleBox("BNB")).fadeIn(300);
+                                    addEthInputEventListener("BNB");
+                                });
+                            }
+
+                            // Attach click event handler for dynamically created BNB button
+                            $(document).on("click", ".buying-button.bnb-button", function () {
+                                onBuyWithBNBClick();
+                            });
+
+                            // Attach click event handler for dynamically created ETH button
+                            $(document).on("click", ".buying-button.eth-button", function () {
+                                onBuyWithETHClick();
+                            });
+
+                            // Attach click event handler for dynamically created BUSD button
+                            $(document).on(
+                                "click",
+                                ".buying-button.busd-button",
+                                function () {
+                                    onBuyWithBNBClick(); // You can create a separate function for the BUSD button if needed
+                                }
+                            );
+
+                            // Attach click event handler for dynamically created USDT button
+                            $(document).on(
+                                "click",
+                                ".buying-button.usdt-button",
+                                function () {
+                                    onBuyWithETHClick(); // You can create a separate function for the USDT button if needed
+                                }
+                            );
+
+                            $(".connect-wallet-button").click(function () {
+                                $("#wallet-provider-popup").fadeIn();
+                            });
+
+                            $("#metamask-button").click(async function () {
+                                $("#wallet-provider-popup").fadeOut();
+                                $("#network-popup").fadeIn();
+
+                                // Attempt to connect with MetaMask
+                                try {
+                                    const accounts = await window.ethereum.request({
+                                        method: "eth_requestAccounts",
+                                    });
+
+                                    if (accounts.length > 0) {
+                                        console.log("User is logged in to MetaMask");
+                                        currentWeb3Instance = new Web3(window.ethereum);
+                                    } else {
+                                        console.log("User is not logged in to MetaMask");
+                                    }
+                                } catch (err) {
+                                    if (err.code === 4001) {
+                                        console.log("User rejected the request");
+                                    } else {
+                                        console.error("An error occurred: ", err);
+                                    }
+                                }
+                            });
+
+                            async function connectWalletConnect() {
+                                provider = new WalletConnectProvider.default({
+                                    rpc: {
+                                        1: "https://mainnet.infura.io/v3/0301a5fae4fc46d3a3cb6725641b1d8d",
+                                        56: "https://bsc-dataseed.binance.org/",
+                                    },
+                                });
+
+                                try {
+                                    await provider.enable();
+                                    currentWeb3Instance = new Web3(provider);
+                                    const accounts = await currentWeb3Instance.eth.getAccounts();
+
+                                    if (accounts.length > 0) {
+                                        console.log("User is logged in to WalletConnect");
+                                        $(".wallet-address").remove();
+
+                                        showDisconnectButton();
+                                        closePopup();
+
+                                        // Show network selection popup
+                                        $("#network-popup").fadeIn(300);
+                                    } else {
+                                        console.log("User is not logged in to WalletConnect");
+                                    }
+                                } catch (err) {
+                                    console.error("An error occurred: ", err);
+                                }
+                            }
+
+                            $("#walletconnect-button").click(function () {
+                                connectWalletConnect();
+                            });
+
+                            async function connectWallet(network, isWalletConnect = false) {
+                                if (isWalletConnect) {
+                                    // Set the provider in WalletConnect according to the selected network
+                                    provider.chainId = parseInt(network);
+                                    currentWeb3Instance = new Web3(provider);
+                                } else {
+                                    if (typeof window.ethereum !== "undefined") {
+                                        try {
+                                            const accounts = await window.ethereum.request({
+                                                method: "eth_requestAccounts",
+                                            });
+
+                                            if (network) {
+                                                await window.ethereum.request({
+                                                    method: "wallet_switchEthereumChain",
+                                                    params: [{ chainId: network }],
+                                                });
+                                            }
+
+                                            if (accounts.length > 0) {
+                                                console.log("User is logged in to MetaMask");
+                                                const address = accounts[0];
+                                                currentWeb3Instance = new Web3(window.ethereum); // <-- Add this line
+                                                closePopup();
+                                            } else {
+                                                console.log("User is not logged in to MetaMask");
+                                            }
+                                        } catch (err) {
+                                            if (err.code === 4001) {
+                                                console.log("User rejected the request");
+                                            } else if (err.code === 4902) {
+                                                console.error("Unable to switch network");
+                                            } else {
+                                                console.error("An error occurred: ", err);
+                                            }
+                                        }
+                                    } else {
+                                        window.alert("Please install MetaMask!");
+                                    }
+                                }
+                            }
+
+                            // Ethereum Mainnet
+                            $("#eth-button")
+                                .off()
+                                .click(function () {
+                                    if (!currentWeb3Instance) {
+                                        alert("Connect to wallet first");
+                                        return;
+                                    }
+
+                                    if (
+                                        currentWeb3Instance &&
+                                        currentWeb3Instance.currentProvider instanceof
+                                        WalletConnectProvider.default
+                                    ) {
+                                        connectWallet("0x1", true);
+                                    } else {
+                                        connectWallet("0x1");
+                                    }
+                                    closePopup();
+                                    showBuyButtons("eth");
+                                });
+
+                            // Binance Smart Chain Mainnet
+                            $("#bsc-button")
+                                .off()
+                                .click(function () {
+                                    if (!currentWeb3Instance) {
+                                        alert("Connect to wallet first");
+                                        return;
+                                    }
+
+                                    if (
+                                        currentWeb3Instance &&
+                                        currentWeb3Instance.currentProvider instanceof
+                                        WalletConnectProvider.default
+                                    ) {
+                                        connectWallet("0x38", true);
+                                    } else {
+                                        connectWallet("0x38");
+                                    }
+                                    closePopup();
+                                    showBuyButtons("bsc");
+                                });
+                        });
+
+
+                    </script>
+                    <div class="col-lg-4">
+                        <div class="banner__thumb about__thumb about__thumb--floating" data-aos="zoom-in-up" data-aos-duration="1000">
+                            <img src="images/home1.png" alt="About Image" style="float: left;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="about padding-top2 padding-bottom" id="about">
+        <div class="container">
+            <div class="about__wrapper">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="about__thumb about__thumb--floating" data-aos="zoom-in-up" data-aos-duration="1000">
+                            <img src="images/makeweed.png" alt="About Image">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="about__content" data-aos="fade-left" data-aos-duration="1000">
+                            <h2>about</h2>
+                            <p>Pepe Bitcoin emerges as the coolest Pepe, capturing the attention of investors who witnessed
+                                the phenomenal success of Pepe, which recently soared to a 1 billion market cap. With a
+                                playful twist on the iconic Pepe meme, Pepe Bitcoin is ready to become the next sensation
+                                in the meme coin world.
+
+                                In a market flooded with countless Inu-inspired coins, Pepe Bitcoin is here to redefine the
+                                meme coin scene and bring the fun back. Prepare to ride the wave of the next big pump
+                                with the most laid-back and entertaining Pepe around!</p>
+                            <!-- <p>Pepes have made millions by being early. It is time for us to test their sins.
+                                It is time for a new pepe to emerge.</p> -->
+                            <p>
+                                <a class="default-btn" href="https://t.me/pepebitcoin" target="=" _blank"">telegram</a>
+                                <a class="default-btn" href="https://t.me/pepebitcoin" target="_blank">twitter</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="roadmap padding-top padding-bottom" id="howtobuy">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up" data-aos-duration="1000">
+                <h2>how to join the presale?</h2>
+            </div>
+            <div class="roadmap__wrapper" data-aos="fade-up" data-aos-duration="1000">
+                <div class="row justify-content-center g-5">
+                    <div class="col-lg-12">
+                        <div class="roadmap__item">
+                            <div class="roadmap__inner">
+                                <div class="roadmap__thumb">
+                                    <img src="images/1.png" alt>
+                                </div>
+                                <div class="roadmap__content">
+                                    <h4>Create a Wallet</h4>
+                                    <p>download metamask or your wallet of choice from the app store or google play
+                                        store for free. Desktop users, download the google chrome extension by going to
+                                        metamask.io.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="roadmap__item">
+                            <div class="roadmap__inner">
+                                <div class="roadmap__thumb roadmap__thumb--bg-2">
+                                    <img src="images/2.png" alt>
+                                </div>
+                                <div class="roadmap__content">
+                                    <h4>Get Some ETH or BNB</h4>
+                                    <p>have ETH or BNB in your wallet to join $PepeBitcoin presale. If you don’t have any
+                                        ETH or BNB, you
+                                        can buy directly on metamask, transfer from another wallet, or buy on another
+                                        exchange and send it to your wallet.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="roadmap__item">
+                            <div class="roadmap__inner">
+                                <div class="roadmap__thumb roadmap__thumb--bg-3">
+                                    <img src="images/3.png" alt>
+                                </div>
+                                <div class="roadmap__content">
+                                    <h4>Go to our Presale</h4>
+                                    <p>connect Your Wallet. Choose your network & enter the amount you want to invest.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="roadmap__item">
+                            <div class="roadmap__inner">
+                                <div class="roadmap__thumb roadmap__thumb--bg-4">
+                                    <img src="images/4.png" alt>
+                                </div>
+                                <div class="roadmap__content">
+                                    <h4>Switch ETH or BNB for PepeBitcoin</h4>
+                                    <p>switch ETH or BNB for $PepeBitcoin. Once transaction is complete, you will see the
+                                        $PepeBitcoin tokens in your wallet!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center mt-5">
+                    <!-- <div class="col-lg-6">
+                        <iframe
+                            src="https://app.uniswap.org/#/swap?outputCurrency=0x874bde83cda6aa224527a3f43aebc3cc60f49428"
+                            height="660px" width="100%"
+                            style=" border: 0; margin: 0 auto; display: block; border-radius: 10px; max-width: 600px; min-width: 300px; ">
+                            " /></iframe>
+                    </div> -->
+                    <div class="col-lg-6">
+                        <img src="images/highpepe2.png" alt style="float:right;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="team padding-top padding-bottom bg__gradient" id="tokenomics">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up" data-aos-duration="1000">
+                <h2>tokenomics</h2>
+            </div>
+            <div class="team__wrapper">
+                <div class="row justify-content-center g-4">
+                    <div class="col-lg-6">
+                        <div class="team__item" data-aos="fade-up" data-aos-duration="1000">
+                            <div class="team__inner">
+
+                                <div class="team__content">
+                                    <h4>Token supply:</h4>
+                                    <h5 class="mt-4">21,000,000 </h5>
+                                    <div class="custom-box">
+                                        <div class="roadmap__item mt-5">
+                                            <div class="roadmap__inner">
+                                                <div class="roadmap__content">
+                                                    <p>
+                                                        No Taxes, No Nonsense. As simple as that. <br><br>Upon
+                                                        launch, 68.389% of the tokens will be allocated to the liquidity
+                                                        pool, some LP tokens will be burnt, and the contract will be
+                                                        renounced. The remaining 31.611% of the supply will be secured
+                                                        in a multi-sig wallet, with 11.611% reserved for future
+                                                        centralized exchange (CEX) listings, 20% for airdrops, and any
+                                                        remaining tokens designated for bridges and liquidity pools.
+                                                        Once the actions are completed, this wallet will be easily
+                                                        trackable with the ENS.<br><br>
+                                                    </p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="team__item team__item--bg-2" data-aos="fade-up" data-aos-duration="1500">
+                            <div class="team__inner">
+                                <div class="team__thumb">
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="mb-0" style="float:right">Cex Listings<br>11,611%</p>
+                                        </div>
+                                        <div class="col">
+                                            <p class="mb-0">Airdrop<br>20%</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="team__content">
+                                    <img src="images/tokenomics68b3.png" alt="tokenomics Image">
+                                </div>
+                                <div class="team__thumb mb-0 mt-4">
+                                    <p>Liquidity Pool<br>69,69%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="roadmap padding-top padding-bottom" id="roadmap">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 text-center">
+                    <img src="images/highpepepee.png" alt>
+                </div>
+                <div class="col-lg-4">
+                    <div class="section-header" data-aos="fade-up" data-aos-duration="1000">
+                        <h2>roadmap</h2>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <img src="images/highpepeface.png" alt>
+                </div>
+            </div>
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8">
+                    <p class="text-center">This is our plan to reach the top. We will shock our community by phases.</p>
+                </div>
+            </div>
+
+            <div class="roadmap__wrapper" data-aos="fade-up" data-aos-duration="1000">
+                <div class="row justify-content-center g-5">
+                    <div class="col-lg-4">
+                        <div class="custom-box">
+                            <div class="roadmap__item">
+                                <div class="roadmap__inner">
+                                    <div class="roadmap__content">
+                                        <h4 class="text-center">Phase 1</h4>
+                                        <p>
+                                            - The Launch of Pepe Bitcoin Presale & Token<br> - CoinMarketCap Listing
+                                            <br> - CoinGecko Listing
+                                            <br> - Reach 1,000+ holders<br> -
+                                            Twitter Trending<br> - CoinMarketCap
+                                            Trending <br> - DexTools Trending
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="custom-box">
+                            <div class="roadmap__item">
+                                <div class="roadmap__inner">
+                                    <div class="roadmap__content">
+                                        <h4 class="text-center">Phase 2</h4>
+                                        <p>
+                                            - Community partnerships<br> - Press Releases<br> - CEX listings<br> -
+                                            25,000+ holders<br> - NFT Collection <br> - Billboards over US
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="custom-box">
+                            <div class="roadmap__item">
+                                <div class="roadmap__inner">
+                                    <div class="roadmap__content">
+                                        <h4 class="text-center">Phase 3</h4>
+                                        <p>- Pepe Bitcoin Merchandise <br>- Pepe Bitcoin Academy <br>- Pepe Bitcoin Store
+                                            (Netherlands) <br> - Meme Takeover
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer bg__gradient">
+        <div class="footer__wrapper">
+            <div class="container">
+                <div class="footer__content text-center padding-bottom">
+                    <h3 class="mb-5">CONTACT</h3>
+                    <div class="mb-5">
+                        <img src="images/logo.png" alt>
+                    </div>
+
+                    <ul class="social-list g-10 d-flex justify-content-center">
+                        <li class="social-item">
+                            <a href="https://t.me/pepebitcoin" target="_blank"><img src="images/twitter.webp" alt="discord"></a>
+                        </li>
+                        <li class="social-item">
+                            <a href="https://t.me/pepebitcoin" target="_blank"><img src="images/telegram.webp" alt="discord"></a>
+                        </li>
+                        <li class="social-item">
+                            <a href="https://t.me/pepebitcoin" target="_blank"><img src="images/instagram.png" alt="discord"></a>
+                        </li>
+                        <!-- <li class="social-item">
+                            <a href="https://etherscan.io/token/0x874bde83cda6aa224527a3f43aebc3cc60f49428"
+                                target="_blank"><img src="assets/images/etherscan.webp" alt="discord"></a>
+                        </li>
+                        <li class="social-item">
+                            <a href="https://coinmarketcap.com/currencies/rektpepe/" target="_blank"><img
+                                    src="assets/images/cmc.webp" alt="discord"></a>
+                        </li>
+                        <li class="social-item">
+                            <a href="https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0x874bde83cda6aa224527a3f43aebc3cc60f49428"
+                                target="_blank"><img src="assets/images/uniswap.webp" alt="discord"></a>
+                        </li> -->
+                    </ul>
+                    <div class="mt-5">
+                        <p class="mb-4">
+                            $PepeBitcoin coin has no association with Matt Furie or his creation Pepe the Frog. This token
+                            is simply paying homage to a meme we all love and recognize.
+                        </p>
+                        <p>
+                            $PepeBitcoin is a meme coin with no intrinsic value or expectation of financial return. There
+                            is no formal team or roadmap. the coin is completely useless and for entertainment purposes
+                            only.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="copywrite text-center mt-5 p-3">
+                <p class="mt-2">© 2023 by PepeBitcoin. All rights reserved!</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/jquery-3.6.0.min_1.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/all.min.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/custom.js"></script>
+
+
+
+
+
+</body></html>
