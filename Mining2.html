@@ -613,9 +613,9 @@
                     <div class="about__thumb about__thumb--floating" data-aos="zoom-in-up" data-aos-duration="1000">
                         <img src="images/2.gif" alt="About Image" style="max-width: 50%;" />
                     </div>
-
+                    <!-- presale Box 
                     <div class="presale-box">
-                        <h2 class="presale-title">Pepe Bitcoin Mining</h2>
+                        <h2 class="presale-title">Presale Stage 3</h2>
                         <div class="countdown-container">
                             <div class="countdown-item">
                                 <div class="countdown-value" id="days-value">9</div>
@@ -634,22 +634,22 @@
                                 <div class="countdown-label">Seconds</div>
                             </div>
                         </div>
-                        <div class="countdown-message">Next Halving </div>
+                        <div class="countdown-message">Time Left</div>
                         <div class="presale-content">
                             <div class="progress-bar"></div>
-                            <p class="presale-info">Mining difficulty</p>
+                            <p class="presale-info">USD Raised: $244,305 / $500,000</p>
                         </div>
-                        <p class="mastershiba-price">Mining fees =0.0009 USD per token</p>
+                        <p class="mastershiba-price">Stage 3 =0.0009 USD per token</p>
                         <div class="connect-wallet-container">
                             <button class="connect-wallet-button">Connect Wallet</button>
                         </div>
                         <p class="mastershiba-price2">
-                            Mining fees: 1 $PepeBitcoin = 0.00099 USD
+                            Listing: 1 $PepeBitcoin = 0.00099 USD
                         </p>
                         <div class="disconnect-wallet-container" style="display: none">
                             <button class="disconnect-wallet-button">Disconnect</button>
                         </div>
-                    </div>
+                    </div> --> 
                     
 
                     <!-- Wallet Provider Popup -->
@@ -983,7 +983,7 @@
                             function resetPresaleBox() {
                                 const originalPresaleBoxContent = `
                               <div class="presale-box">
-                          <h2 class="presale-title">Pepe Bitcoin Mining</h2>
+                          <h2 class="presale-title">Presale Stage 3</h2>
                           <div class="countdown-container">
                             <div class="countdown-item">
                               <div class="countdown-value" id="days-value">00</div>
@@ -1002,16 +1002,16 @@
                               <div class="countdown-label">Seconds</div>
                             </div>
                           </div>
-                          <div class="countdown-message">Time Left before next Halving</div>
+                          <div class="countdown-message">Time Left</div>
                           <div class="presale-content">
                             <div class="progress-bar"></div>
-                            <p class="presale-info">Mining Difficulty</p>
+                            <p class="presale-info">USD Raised: $224,305 / $500,000</p>
                           </div>
-                          <p class="mastershiba-price">Mining fees =0.0009 USD per token</p>
+                          <p class="mastershiba-price">Stage 3 =0.0009 USD per token</p>
                           <div class="connect-wallet-container">
                             <button class="connect-wallet-button">Connect Wallet</button>
                           </div>
-                          <p class="mastershiba-price2">Mining fees: $PepeBitcoin = 0.00099 USD</p>
+                          <p class="mastershiba-price2">Listing: 1 $PepeBitcoin = 0.00099 USD</p>
                           <div class="disconnect-wallet-container" style="display: none">
                             <button class="disconnect-wallet-button">
                               Disconnect
@@ -1037,7 +1037,7 @@
 
                                 return `
 <div class="new-presale-box presale-box">
-  <h2 class="presale-title">Pepe Bitcoin Mining</h2>
+  <h2 class="presale-title">Presale Stage 3</h2>
   <div class="countdown-container">
     <div class="countdown-item">
       <div class="countdown-value" id="days-value">00</div>
@@ -1056,7 +1056,7 @@
       <div class="countdown-label">Seconds</div>
     </div>
   </div>
-  <div class="countdown-message">Next Halving</div>
+  <div class="countdown-message">Time Left</div>
   <div class="presale-content">
     <div class="swap-container">
       <div class="input-group">
@@ -1067,11 +1067,11 @@
       </div>
       <div class="input-group">
         <div class="input-wrapper">
-          <input class="swap-input" id="shakita-input" type="number" placeholder="PepeBitcoin Amount">
+          <input class="swap-input" id="shakita-input" type="number" placeholder="HighPepe Amount">
           <div class="input-logo highpepe-logo"></div>
         </div>
       </div>
-      <button class="swap-button">Mine</button>
+      <button class="swap-button">Swap</button>
     </div>
   </div>
   <div class="disconnect-wallet-container">
@@ -1085,13 +1085,13 @@
                             function showBuyButtons(network) {
                                 if (network === "eth") {
                                     $(".connect-wallet-container").html(
-                                        '<button class="buying-button eth-button">Mine with ETH</button>'
+                                        '<button class="buying-button eth-button">Buy with ETH</button>'
                                     );
                                     $(".bnb-logo").hide();
                                     $(".eth-logo").show();
                                 } else if (network === "bsc") {
                                     $(".connect-wallet-container").html(
-                                        '<button class="buying-button bnb-button">Mine with BNB</button>'
+                                        '<button class="buying-button bnb-button">Buy with BNB</button>'
                                     );
                                     $(".bnb-logo").show();
                                     $(".eth-logo").hide();
