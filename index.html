@@ -5,6 +5,7 @@
     <style> html { zoom: 0.90; } </style>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RBHRWCGL74"></script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() {
@@ -568,6 +569,17 @@
             }
         }
         
+        #google_translate_element {
+        width: 200px;
+        height: 30px;
+        
+        }
+
+        #google_translate_element {
+        font-family: Arial;
+        font-size: 18px;  
+        
+        }
 
 
 
@@ -587,9 +599,14 @@
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler--icon"></span>
                 </button>
+                <div id="google_translate_element"></div>
+                        <script>
+                            function googleTranslateElementInit() {
+                              new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+                            } 
+                            </script>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                     <div class="navbar-nav align-items-center">
-                        <a class="nav-link" aria-current="page" href="#home">Home</a>
                         <a class="nav-link" href="#about">About</a>
                         <a class="nav-link" href="#howtobuy">Buy</a>
                         <a class="nav-link" href="#tokenomics">Tokenomics</a>
@@ -607,6 +624,7 @@
             </nav>
         </div>
     </header>
+
 
     <section id="home" class="banner">
         <div class="container-fluid">
